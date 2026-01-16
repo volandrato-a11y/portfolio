@@ -4,13 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>RIJA NIAINA CAR SERVICES | Location Voiture Sans Chauffeur Antananarivo</title>
-    <meta name="description" content="Louez votre voiture sans chauffeur à Madagascar. Toyota Vitz, Prado, 4x4. Service fiable et rapide à Antananarivo.">
-    <meta name="keywords" content="location voiture, sans chauffeur, Madagascar, Antananarivo, Toyota Vitz, Prado, 4x4">
-    <link rel="canonical" href="http://www.votre-site.com">
-
-    <meta property="og:title" content="RIJA NIAINA CAR SERVICES - Location de voitures">
-    <meta property="og:image" content="images/og-preview.jpg">
+    <title>RIJA NIAINA CAR SERVICES | Location Sans Chauffeur Antananarivo</title>
+    <meta name="description" content="Louez votre voiture sans chauffeur à Antananarivo. Toyota Vitz, Prado, 4x4. Service fiable et rapide à Madagascar.">
+    <meta name="keywords" content="location voiture, sans chauffeur, Tana, Madagascar, Rija Niaina">
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,206 +14,200 @@
 </head>
 <body>
 
-<nav class="navbar">
-    <div class="container nav-container">
-        <div class="logo">RIJA NIAINA <span>SERVICES</span></div>
-        <ul class="nav-links">
-            <li><a href="#home">Accueil</a></li>
-            <li><a href="#services">Pourquoi ?</a></li>
-            <li><a href="#cars">Voitures</a></li>
-            <li><a href="#terms">Conditions</a></li>
-            <li><a href="#radio">Radio</a></li>
-            <li><a href="#contact" class="btn-nav">Contact</a></li>
-        </ul>
-        <div class="mobile-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+<header class="header">
+    <div class="header-top">
+        <h1>RIJA NIAINA <span>SERVICES</span></h1>
+        <a href="https://wa.me/261388552432" target="_blank" class="whatsapp-badge"><i class="fab fa-whatsapp"></i> WhatsApp</a>
     </div>
-</nav>
 
-<div class="scroll-container">
+    <nav>
+        <button onclick="openTab('home')">Accueil</button>
+        <button onclick="openTab('why')">Pourquoi ?</button>
+        <button onclick="openTab('cars')">Voitures</button>
+        <button onclick="openTab('terms')">Conditions</button>
+        <button onclick="openTab('radio')">Divertissement</button>
+        <button onclick="openTab('contact')" class="btn-nav-contact">Contact</button>
+    </nav>
+</header>
 
-    <section id="home" class="snap-section hero">
-        <div class="hero-overlay">
-            <div class="hero-content">
-                <span class="badge-top">LIBERTÉ TOTALE</span>
-                <h1>Location Sans Chauffeur</h1>
-                <p>Prenez le volant et explorez Madagascar en toute autonomie. Pas de chauffeur, pas de limites.</p>
-                <div class="hero-btns">
-                    <a href="#cars" class="btn btn-primary">Voir les véhicules</a>
-                    <a href="https://wa.me/261388552432" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+<main>
+
+    <section id="home" class="tab active">
+        <div class="hero-content">
+            <span class="tagline">SERVICE SANS CHAUFFEUR</span>
+            <h2>La liberté de rouler à votre propre rythme</h2>
+            <p>Découvrez Madagascar en toute autonomie avec nos véhicules parfaitement entretenus. Que ce soit pour le travail ou les vacances, vous êtes le seul maître à bord.</p>
+            <button class="btn-main" onclick="openTab('cars')">Choisir mon véhicule</button>
+        </div>
+    </section>
+
+    <section id="why" class="tab">
+        <h2 class="section-title">Pourquoi nous choisir ?</h2>
+        <div class="features-list">
+            <div class="feature-item">
+                <i class="fas fa-user-shield"></i>
+                <div>
+                    <h3>Confidentialité & Liberté</h3>
+                    <p>Location 100% sans chauffeur. Gérez vos trajets et vos horaires sans aucune contrainte extérieure.</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-car-battery"></i>
+                <div>
+                    <h3>Zéro souci technique</h3>
+                    <p>Nos véhicules sont révisés rigoureusement avant chaque contrat pour garantir votre sécurité sur la route.</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-hand-holding-usd"></i>
+                <div>
+                    <h3>Transparence totale</h3>
+                    <p>Les tarifs sont clairs, sans frais cachés. Le prix fixé à la réservation est celui que vous payez.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="services" class="snap-section bg-light">
-        <div class="container">
-            <h2 class="section-title">Pourquoi nous choisir ?</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <i class="fas fa-key"></i>
-                    <h3>100% Sans Chauffeur</h3>
-                    <p>Le plaisir de conduire soi-même, en toute intimité pour vos affaires ou en famille.</p>
+    <section id="cars" class="tab">
+        <h2 class="section-title">Notre Flotte</h2>
+        
+        <div class="car-card">
+            <div class="car-gallery">
+                <img src="images/vitz1.jpg" alt="Toyota Vitz Vue 1">
+                <img src="images/vitz2.jpg" alt="Toyota Vitz Vue 2">
+                <img src="images/vitz3.jpg" alt="Toyota Vitz Interieur">
+            </div>
+            <div class="car-details">
+                <h3>Toyota Vitz (Citadine)</h3>
+                <p>Idéale pour la ville, consommation très faible, boîte automatique.</p>
+                <div class="price">30 000 Ar / jour</div>
+                <button onclick="bookCar('Toyota Vitz')" class="btn-action">Réserver ce modèle</button>
+            </div>
+        </div>
+
+        <div class="car-card">
+            <div class="car-gallery">
+                <img src="images/prado1.jpg" alt="Toyota Prado Vue 1">
+                <img src="images/prado2.jpg" alt="Toyota Prado Vue 2">
+            </div>
+            <div class="car-details">
+                <h3>Toyota Prado (SUV 4x4)</h3>
+                <p>Puissant et spacieux, parfait pour les routes nationales ou les sorties en famille.</p>
+                <div class="price">80 000 Ar / jour</div>
+                <button onclick="bookCar('Toyota Prado')" class="btn-action">Réserver ce modèle</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="terms" class="tab">
+        <h2 class="section-title">Conditions de location</h2>
+        <p class="terms-intro">Cliquez sur une condition pour voir les détails :</p>
+        
+        <div class="accordion">
+            <div class="accordion-item">
+                <button class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>1. Pièces d'identité</span> <i class="fas fa-plus"></i>
+                </button>
+                <div class="accordion-body">
+                    <p>Original de la CIN pour les résidents ou Passeport pour les non-résidents. Un justificatif de domicile (Jirama) de moins de 3 mois est requis.</p>
                 </div>
-                <div class="feature-card">
-                    <i class="fas fa-shield-alt"></i>
-                    <h3>Véhicules Révisés</h3>
-                    <p>Chaque voiture subit un contrôle rigoureux avant chaque remise de clés.</p>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>2. Permis de conduire</span> <i class="fas fa-plus"></i>
+                </button>
+                <div class="accordion-body">
+                    <p>Permis de conduire catégorie B valide depuis plus de 2 ans. Seul le conducteur désigné au contrat est autorisé à conduire.</p>
                 </div>
-                <div class="feature-card">
-                    <i class="fas fa-clock"></i>
-                    <h3>Service Rapide</h3>
-                    <p>Prise en charge simplifiée à Ambodifilao pour un départ en moins de 15 minutes.</p>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>3. Caution et Paiement</span> <i class="fas fa-plus"></i>
+                </button>
+                <div class="accordion-body">
+                    <p>Le paiement total de la location se fait au départ. Une caution de garantie est demandée et restituée après l'état des lieux de retour.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="cars" class="snap-section">
-        <div class="container">
-            <h2 class="section-title">Notre Flotte</h2>
-            <div class="cars-grid">
-                
-                <div class="car-card">
-                    <div class="gallery-wrapper">
-                        <button class="gallery-nav prev" onclick="moveGallery(this, -1)">&#10094;</button>
-                        <div class="gallery-scroll">
-                            <img src="images/vitz_1.jpg" alt="Toyota Vitz">
-                            <img src="images/vitz_2.jpg" alt="Toyota Vitz Interieur">
-                        </div>
-                        <button class="gallery-nav next" onclick="moveGallery(this, 1)">&#10095;</button>
-                    </div>
-                    <div class="car-info">
-                        <h3>Toyota Vitz</h3>
-                        <p class="car-tag">Citadine - Économique</p>
-                        <div class="price">30 000 Ar <span>/ jour</span></div>
-                        <button onclick="bookCar('Toyota Vitz')" class="btn-book">Réserver</button>
-                    </div>
-                </div>
-
-                <div class="car-card">
-                    <div class="gallery-wrapper">
-                        <button class="gallery-nav prev" onclick="moveGallery(this, -1)">&#10094;</button>
-                        <div class="gallery-scroll">
-                            <img src="images/prado_1.jpg" alt="Toyota Prado">
-                            <img src="images/prado_2.jpg" alt="Toyota Prado 4x4">
-                        </div>
-                        <button class="gallery-nav next" onclick="moveGallery(this, 1)">&#10095;</button>
-                    </div>
-                    <div class="car-info">
-                        <h3>Toyota Prado</h3>
-                        <p class="car-tag">SUV 4x4 - Confort</p>
-                        <div class="price">80 000 Ar <span>/ jour</span></div>
-                        <button onclick="bookCar('Toyota Prado')" class="btn-book">Réserver</button>
-                    </div>
-                </div>
-
+    <section id="radio" class="tab">
+        <h2 class="section-title">WebRadios Madagascar</h2>
+        <div class="radio-container">
+            <div class="radio-card">
+                <h4>RDB 103.2 FM</h4>
+                <audio controls src="https://stream.radio.co/s6f3c1b1f1/listen"></audio>
+            </div>
+            <div class="radio-card">
+                <h4>Radio Vaovao Mahasoa</h4>
+                <audio controls src="https://stream.zeno.fm/asnyub7ycv8uv"></audio>
             </div>
         </div>
     </section>
 
-    <section id="terms" class="snap-section bg-light">
-        <div class="container">
-            <h2 class="section-title">Conditions de location</h2>
-            <div class="accordion">
-                <div class="accordion-item">
-                    <button class="accordion-header" onclick="toggleAccordion(this)">
-                        1. Documents requis <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="accordion-content">
-                        <p>Vous devez fournir une copie de votre CIN ou Passeport, ainsi qu'un permis de conduire valide de plus de 2 ans.</p>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <button class="accordion-header" onclick="toggleAccordion(this)">
-                        2. Caution et Garantie <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="accordion-content">
-                        <p>Une caution (chèque ou espèces) est exigée au départ. Elle est restituée intégralement après l'état des lieux de retour.</p>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <button class="accordion-header" onclick="toggleAccordion(this)">
-                        3. Carburant et Kilométrage <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="accordion-content">
-                        <p>Le véhicule est livré avec le plein ou un niveau précis. Merci de le rendre avec le même niveau.</p>
-                    </div>
-                </div>
-                </div>
-        </div>
+    <section id="contact" class="tab">
+        <h2 class="section-title">Contactez-nous</h2>
+        <form class="contact-form" onsubmit="sendWhatsApp(); return false;">
+            <input type="text" id="name" placeholder="Votre Nom complet" required>
+            <input type="tel" id="phone" placeholder="Votre numéro de téléphone" required>
+            <select id="car_select">
+                <option value="Non précisé">Sélectionner un véhicule (optionnel)</option>
+                <option value="Toyota Vitz">Toyota Vitz</option>
+                <option value="Toyota Prado">Toyota Prado</option>
+            </select>
+            <textarea id="message" placeholder="Dates souhaitées et autres questions..." required></textarea>
+            <button type="submit" class="btn-submit">📤 Envoyer sur WhatsApp</button>
+        </form>
     </section>
 
-    <section id="radio" class="snap-section">
-        <div class="container">
-            <h2 class="section-title">Radio en direct</h2>
-            <div class="radio-grid">
-                <div class="radio-card">
-                    <i class="fas fa-radio"></i>
-                    <h4>Radio Vaovao Mahasoa</h4>
-                    <audio src="https://stream.zeno.fm/asnyub7ycv8uv" controls></audio>
-                </div>
-                <div class="radio-card">
-                    <i class="fas fa-music"></i>
-                    <h4>RDB 103.2</h4>
-                    <audio src="https://stream.radio.co/s6f3c1b1f1/listen" controls></audio>
-                </div>
-            </div>
-        </div>
-    </section>
+</main>
 
-    <section id="contact" class="snap-section">
-        <div class="container">
-            <h2 class="section-title">Contactez-nous</h2>
-            <div class="contact-box">
-                <div class="contact-info">
-                    <p><i class="fas fa-map-marker-alt"></i> Ambodifilao, Analakely</p>
-                    <p><i class="fas fa-phone-alt"></i> +261 38 85 524 32</p>
-                </div>
-                <form class="contact-form" onsubmit="sendWhatsApp(); return false;">
-                    <input type="text" id="name" placeholder="Votre nom" required>
-                    <textarea id="message" placeholder="Détails de votre réservation..." required></textarea>
-                    <button type="submit" class="btn btn-primary">Envoyer via WhatsApp</button>
-                </form>
-            </div>
-            <footer class="main-footer">
-                &copy; 2024 RIJA NIAINA CAR SERVICES - NIF : 5012357932
-            </footer>
-        </div>
-    </section>
+<footer>
+    <p>📍 Siae 33 Ambodifilao, Analakely, Antananarivo</p>
+    <p>📞 +261 38 85 524 32</p>
+    <p class="legal">NIF : 5012357932 | STAT : 70209 11 2025 0 06328</p>
+</footer>
 
-</div> <script>
-    // Menu Mobile
-    function toggleMenu() {
-        document.querySelector('.nav-links').classList.toggle('active');
+<a href="tel:+261388552432" class="floating-call"><i class="fas fa-phone"></i></a>
+
+<script>
+    // Gestion des onglets
+    function openTab(id) {
+        document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        window.scrollTo(0, 0); // Remonte en haut de page lors du changement
     }
 
-    // Accordéons
-    function toggleAccordion(header) {
-        const item = header.parentElement;
-        item.classList.toggle('active');
+    // Gestion des accordéons
+    function toggleAccordion(btn) {
+        const item = btn.parentElement;
+        item.classList.toggle('open');
+        const icon = btn.querySelector('i');
+        if (item.classList.contains('open')) {
+            icon.classList.replace('fa-plus', 'fa-minus');
+        } else {
+            icon.classList.replace('fa-minus', 'fa-plus');
+        }
     }
 
-    // Galeries
-    function moveGallery(btn, step) {
-        const scrollDiv = btn.parentElement.querySelector('.gallery-scroll');
-        scrollDiv.scrollBy({ left: step * 250, behavior: 'smooth' });
+    // Remplissage automatique pour réservation
+    function bookCar(carName) {
+        openTab('contact');
+        document.getElementById('car_select').value = carName;
+        document.getElementById('message').value = "Bonjour, je souhaite louer la " + carName + " sans chauffeur...";
     }
 
-    // Réservation
-    function bookCar(car) {
-        document.getElementById('message').value = "Bonjour, je souhaite réserver la " + car + " sans chauffeur. Quelles sont les disponibilités ?";
-        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    // WhatsApp
+    // Envoi WhatsApp
     function sendWhatsApp() {
         const name = document.getElementById('name').value;
+        const car = document.getElementById('car_select').value;
         const msg = document.getElementById('message').value;
-        const url = "https://wa.me/261388552432?text=" + encodeURIComponent("Nom: " + name + "\n" + msg);
-        window.open(url, '_blank');
+        const text = `Bonjour Rija Niaina Car Services,\n\nNom: ${name}\nVéhicule: ${car}\nMessage: ${msg}`;
+        window.open(`https://wa.me/261388552432?text=${encodeURIComponent(text)}`, '_blank');
     }
 </script>
 
 </body>
 </html>
-
