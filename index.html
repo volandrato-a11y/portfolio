@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>RIJA NIAINA CAR SERVICES - Location Sans Chauffeur</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="container nav-container">
+        <div class="logo">RIJA NIAINA <span>SERVICES</span></div>
+        <ul class="nav-links">
+            <li><a href="#home">Accueil</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#cars">Véhicules</a></li>
+            <li><a href="#terms">Conditions</a></li>
+            <li><a href="#contact" class="btn-nav">Contact</a></li>
+        </ul>
+        <div class="mobile-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+</nav>
+
+<header id="home" class="hero">
+    <div class="hero-overlay">
+        <div class="hero-content">
+            <span class="tagline">LOCATION SANS CHAUFFEUR</span>
+            <h1>La liberté de rouler à votre rythme</h1>
+            <p>
+                Découvrez Madagascar en toute autonomie. 
+                Profitez de nos véhicules parfaitement entretenus pour vos déplacements professionnels, 
+                vacances ou escapades en ville.
+                <strong>Pas de chauffeur, pas de contraintes, juste vous et la route.</strong>
+            </p>
+            <div class="hero-buttons">
+                <a href="#cars" class="btn btn-primary">Choisir ma voiture</a>
+                <a href="#contact" class="btn btn-outline">Nous contacter</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main>
+
+    <section id="services" class="section bg-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>L'expérience Rija Niaina</h2>
+                <div class="underline"></div>
+                <p>Plus qu'une simple location, nous vous offrons la tranquillité d'esprit.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-car-side"></i>
+                    <h3>Liberté Totale</h3>
+                    <p>Véhicules loués sans chauffeur. Vous gérez votre emploi du temps et vos itinéraires sans dépendre de personne.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-tools"></i>
+                    <h3>Entretien Rigoureux</h3>
+                    <p>Chaque voiture passe un contrôle technique complet avant remise des clés. Sécurité et fiabilité garanties.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <h3>Tarifs Transparents</h3>
+                    <p>Pas de frais cachés. Le prix annoncé est le prix payé. Des forfaits adaptés à la courte et longue durée.</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-headset"></i>
+                    <h3>Assistance 7j/7</h3>
+                    <p>Un problème sur la route ? Notre équipe est joignable à tout moment pour vous assister rapidement.</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-user-shield"></i>
+                    <h3>Confidentialité</h3>
+                    <p>Profitez de votre voyage en toute intimité, que ce soit pour des rendez-vous d'affaires ou des moments en famille.</p>
+                </div>
+
+                </div>
+        </div>
+    </section>
+
+    <section id="cars" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Notre Flotte</h2>
+                <div class="underline"></div>
+                <p>Des véhicules adaptés à la ville comme aux longs trajets</p>
+            </div>
+
+            <div class="cars-grid">
+                
+                <div class="car-card">
+                    <div class="gallery-container">
+                        <button class="nav-btn prev" onclick="scrollGallery(this, -1)">&#10094;</button>
+                        <button class="nav-btn next" onclick="scrollGallery(this, 1)">&#10095;</button>
+                        
+                        <div class="car-gallery">
+                            <img src="images/vitz/vitz1.jpg" alt="Vitz Vue 1">
+                            <img src="images/vitz/vitz2.jpg" alt="Vitz Vue 2">
+                            <img src="images/vitz/vitz3.jpg" alt="Vitz Interieur">
+                        </div>
+                        <span class="badge">Citadine</span>
+                    </div>
+
+                    <div class="car-details">
+                        <h3>Toyota Vitz</h3>
+                        <div class="specs">
+                            <span><i class="fas fa-gas-pump"></i> Essence</span>
+                            <span><i class="fas fa-chair"></i> 5 Places</span>
+                            <span><i class="fas fa-cog"></i> Auto</span>
+                        </div>
+                        <p class="description">La reine de la ville. Économique, facile à garer et climatisée. Parfaite pour vos courses en centre-ville.</p>
+                        <div class="price-action">
+                            <span class="price">30 000 Ar <small>/jour</small></span>
+                            <button onclick="bookCar('Toyota Vitz')" class="btn-book">Réserver</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="car-card">
+                    <div class="gallery-container">
+                        <button class="nav-btn prev" onclick="scrollGallery(this, -1)">&#10094;</button>
+                        <button class="nav-btn next" onclick="scrollGallery(this, 1)">&#10095;</button>
+                        
+                        <div class="car-gallery">
+                            <img src="images/prado/prado1.jpg" alt="Prado Vue 1">
+                            <img src="images/prado/prado2.jpg" alt="Prado Vue 2">
+                            <img src="images/prado/prado3.jpg" alt="Prado Interieur">
+                        </div>
+                        <span class="badge premium">SUV 4x4</span>
+                    </div>
+
+                    <div class="car-details">
+                        <h3>Toyota Prado</h3>
+                        <div class="specs">
+                            <span><i class="fas fa-gas-pump"></i> Diesel</span>
+                            <span><i class="fas fa-chair"></i> 7 Places</span>
+                            <span><i class="fas fa-mountain"></i> 4x4</span>
+                        </div>
+                        <p class="description">Puissance et confort. Idéale pour les longs trajets sur route nationale ou les sorties en famille nombreuse.</p>
+                        <div class="price-action">
+                            <span class="price">80 000 Ar <small>/jour</small></span>
+                            <button onclick="bookCar('Toyota Prado')" class="btn-book">Réserver</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="car-card">
+                    <div class="gallery-container">
+                        <button class="nav-btn prev" onclick="scrollGallery(this, -1)">&#10094;</button>
+                        <button class="nav-btn next" onclick="scrollGallery(this, 1)">&#10095;</button>
+                        
+                        <div class="car-gallery">
+                            <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=600&q=80" alt="Autre voiture">
+                            <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=600&q=80" alt="Autre voiture 2">
+                        </div>
+                        <span class="badge">Berline</span>
+                    </div>
+
+                    <div class="car-details">
+                        <h3>Hyundai Accent</h3>
+                        <div class="specs">
+                            <span><i class="fas fa-gas-pump"></i> Essence</span>
+                            <span><i class="fas fa-chair"></i> 5 Places</span>
+                            <span><i class="fas fa-cog"></i> Manuelle</span>
+                        </div>
+                        <p class="description">Une berline élégante et spacieuse, parfaite pour les déplacements professionnels ou les mariages.</p>
+                        <div class="price-action">
+                            <span class="price">60 000 Ar <small>/jour</small></span>
+                            <button onclick="bookCar('Hyundai Accent')" class="btn-book">Réserver</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+        </div>
+    </section>
+
+    <section id="terms" class="section bg-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>Conditions de Location</h2>
+                <div class="underline"></div>
+                <p>Simple et clair, pour une relation de confiance.</p>
+            </div>
+
+            <div class="terms-grid">
+                
+                <div class="term-card">
+                    <div class="icon-box"><i class="fas fa-id-card"></i></div>
+                    <h3>Permis de Conduire</h3>
+                    <p>Permis B valide depuis au moins 2 ans obligatoire. Présentation de l'original exigée.</p>
+                </div>
+
+                <div class="term-card">
+                    <div class="icon-box"><i class="fas fa-file-contract"></i></div>
+                    <h3>Pièces à fournir</h3>
+                    <p>Original de la CIN ou Passeport + Justificatif de domicile récent (Jirama ou Certificat).</p>
+                </div>
+
+                <div class="term-card">
+                    <div class="icon-box"><i class="fas fa-money-bill-wave"></i></div>
+                    <h3>Caution & Paiement</h3>
+                    <p>Caution obligatoire (chèque ou espèces) restituée au retour. Paiement de la location au départ.</p>
+                </div>
+
+                <div class="term-card">
+                    <div class="icon-box"><i class="fas fa-gas-pump"></i></div>
+                    <h3>Carburant</h3>
+                    <p>Système "Même niveau". Le véhicule doit être rendu avec le même niveau de carburant qu'au départ.</p>
+                </div>
+
+                <div class="term-card">
+                    <div class="icon-box"><i class="fas fa-map-marked-alt"></i></div>
+                    <h3>Zone de circulation</h3>
+                    <p>L'utilisation est prévue pour Tana et périphéries / Routes nationales goudronnées. Piste sur demande.</p>
+                </div>
+
+                </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h2>Contactez-nous</h2>
+                    <p>Prêt à prendre la route ? Envoyez-nous un message pour vérifier la disponibilité.</p>
+                    <ul class="info-list">
+                        <li><i class="fas fa-map-marker-alt"></i> Siae 33 Ambodifilao, Analakely</li>
+                        <li><i class="fas fa-phone-alt"></i> +261 38 85 524 32</li>
+                        <li><i class="fas fa-envelope"></i> contact@rijaniaina.mg</li>
+                        <li><i class="fas fa-clock"></i> Lun - Sam : 08h00 - 18h00</li>
+                    </ul>
+                </div>
+
+                <form class="contact-form" onsubmit="sendWhatsApp(); return false;">
+                    <h3>Envoyer un message</h3>
+                    <div class="input-group">
+                        <input type="text" id="name" required placeholder=" ">
+                        <label>Votre nom</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="tel" id="phone" required placeholder=" ">
+                        <label>Téléphone</label>
+                    </div>
+                    <div class="input-group">
+                        <select id="subject">
+                            <option value="Réservation">Je veux réserver une voiture</option>
+                            <option value="Devis">Demande de devis (Longue durée)</option>
+                            <option value="Information">Demande d'information</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <textarea id="message" required placeholder=" "></textarea>
+                        <label>Détails (Dates, type de voiture...)</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary full-width">
+                        Envoyer sur WhatsApp <i class="fab fa-whatsapp"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="container footer-content">
+        <p>&copy; 2024 RIJA NIAINA CAR SERVICES.</p>
+        <p class="legal">NIF : 5012357932 | STAT : 70209 11 2025 0 06328</p>
+    </div>
+</footer>
+
+<a href="tel:+261388552432" class="floating-btn pulse">
+    <i class="fas fa-phone"></i>
+</a>
+
+<script>
+    // Menu Mobile
+    function toggleMenu() {
+        document.querySelector('.nav-links').classList.toggle('active');
+    }
+
+    // Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+            document.querySelector('.nav-links').classList.remove('active');
+        });
+    });
+
+    // Gestion du défilement des images (Slider)
+    function scrollGallery(btn, direction) {
+        const gallery = btn.parentElement.querySelector('.car-gallery');
+        const scrollAmount = gallery.clientWidth; // Largeur d'une image
+        gallery.scrollBy({ left: scrollAmount * direction, behavior: 'smooth' });
+    }
+
+    // Pré-remplir la réservation
+    function bookCar(carName) {
+        document.getElementById('subject').value = "Réservation";
+        document.getElementById('message').value = `Bonjour, je suis intéressé par la location de la ${carName}. Voici mes dates : ...`;
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Envoi WhatsApp
+    function sendWhatsApp() {
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
+
+        const text = `*NOUVELLE DEMANDE WEB*%0A%0A👤 *Nom:* ${name}%0A📱 *Tél:* ${phone}%0A📂 *Objet:* ${subject}%0A%0A📝 *Message:*%0A${message}`;
+
+        window.open(`https://wa.me/261388552432?text=${text}`, '_blank');
+    }
+</script>
+
+</body>
+</html>
