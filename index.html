@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Location Voiture Antananarivo - Rija Niaina Car Services Madagascar</title>
-    <meta name="description" content="Location de voiture premium sans chauffeur à Antananarivo. Meilleur prix pour louer une voiture à Madagascar.">
-    <meta name="keywords" content="location voiture antananarivo, louer voiture madagascar, rija niaina car services, car rental tana">
+    <title>Location Voiture Antananarivo | Rija Niaina Car Services Madagascar</title>
+    <meta name="description" content="Louez votre voiture à Antananarivo au meilleur prix. Large choix de véhicules : SUV, Berlines et 4x4. Service fiable, sans chauffeur ou avec chauffeur à Madagascar.">
+    <meta name="keywords" content="location voiture antananarivo, louer voiture madagascar, 4x4 madagascar, transport tana, Rija Niaina Car Services">
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -15,14 +15,14 @@
 
 <header class="header">
     <div class="nav-container">
-        <h1 id="brand-name">RIJA NIAINA</h1>
+        <h1 id="brand-name">RIJA NIAINA <span>SERVICES</span></h1>
         <div class="menu-burger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
         <nav id="nav-menu">
             <button onclick="openTab('home')">Accueil</button>
-            <button onclick="openTab('cars')">Véhicules</button>
+            <button onclick="openTab('cars')">Nos Véhicules</button>
             <button onclick="openTab('fun')">Divertissement</button>
             <button onclick="openTab('terms')">Conditions</button>
-            <button onclick="openTab('contact')" class="nav-special">Contact</button>
+            <button onclick="openTab('contact')">Réservation</button>
         </nav>
     </div>
 </header>
@@ -30,51 +30,42 @@
 <main>
     <section id="home" class="tab active">
         <div class="hero">
-            <div class="hero-overlay">
-                <h2>Liberté de conduire à Antananarivo</h2>
-                <p>Location premium sans chauffeur. Profitez de Madagascar en toute autonomie.</p>
+            <div class="hero-content">
+                <h2>Votre liberté de mouvement à Madagascar</h2>
+                <p>Des véhicules confortables pour vos déplacements professionnels et touristiques.</p>
                 <div class="hero-btns">
-                    <a id="hero-call" href="#" class="btn-call">📞 Appeler</a>
-                    <a id="hero-wa" href="#" class="btn-wa">💬 WhatsApp</a>
+                    <a id="hero-call" class="btn"><i class="fas fa-phone"></i> Appeler</a>
+                    <a id="hero-wa" class="btn wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                 </div>
             </div>
         </div>
-        <div class="container" style="text-align:center;">
-            <div class="social-quick-links">
-                <a id="link-fb" href="#" target="_blank"><i class="fab fa-facebook"></i></a>
-                <a id="link-tk" href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
-                <a id="link-ig" href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a id="link-map" href="#" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
-            </div>
-            <h2 class="section-title">Nos Services Premium</h2>
-            <div id="features-grid" class="flip-grid"></div>
-        </div>
+        <div class="container" id="features-grid"></div>
     </section>
 
     <section id="cars" class="tab">
-        <div class="container"><h2>Véhicules disponibles</h2><div id="cars-grid" class="grid"></div></div>
+        <div class="container">
+            <h2 class="section-title">Notre Flotte de Véhicules</h2>
+            <div id="cars-grid" class="cars-container"></div>
+        </div>
     </section>
 
     <section id="fun" class="tab">
         <div class="container">
-            <h2>Divertissement en route</h2>
-            <div class="fun-section">
-                <h3>Web Radios Malagasy & Internationales</h3>
-                <div id="radios-grid" class="grid-small"></div>
-            </div>
-            <div class="fun-section" style="margin-top:40px;">
-                <h3>Vos Playlists favorites</h3>
-                <div class="playlist-btns">
-                    <a id="play-yt" target="_blank" class="play-btn yt"><i class="fab fa-youtube"></i> YouTube</a>
-                    <a id="play-sp" target="_blank" class="play-btn sp"><i class="fab fa-spotify"></i> Spotify</a>
-                    <a id="play-dz" target="_blank" class="play-btn dz"><i class="fab fa-deezer"></i> Deezer</a>
-                </div>
+            <h2>Radios & Playlists</h2>
+            <div id="radios-grid" class="radio-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 30px;"></div>
+            <div class="playlists">
+                <a id="play-yt" class="play-btn yt"><i class="fab fa-youtube"></i> YouTube</a>
+                <a id="play-sp" class="play-btn sp"><i class="fab fa-spotify"></i> Spotify</a>
+                <a id="play-dz" class="play-btn dz"><i class="fab fa-deezer"></i> Deezer</a>
             </div>
         </div>
     </section>
-    
+
     <section id="terms" class="tab">
-        <div class="container"><h2>Conditions de location</h2><div id="conditions-list" class="flip-grid"></div></div>
+        <div class="container">
+            <h2 class="section-title">Conditions de Location</h2>
+            <div id="conditions-list" class="flip-grid"></div>
+        </div>
     </section>
 
     <section id="contact" class="tab">
@@ -86,17 +77,16 @@
                         <div class="form-group"><label>Nom</label><input type="text" id="lname" required></div>
                         <div class="form-group"><label>Prénom</label><input type="text" id="fname" required></div>
                     </div>
-                    <div class="form-group"><label>Mail</label><input type="email" id="email" required></div>
+                    <div class="form-group"><label>Email</label><input type="email" id="email" required></div>
                     <div class="form-group">
                         <label>Motif</label>
                         <select id="subject">
                             <option value="Reservation">Réservation</option>
                             <option value="Devis">Demande de devis</option>
-                            <option value="Suggestion">Suggestion</option>
                         </select>
                     </div>
-                    <div class="form-group"><label>Détails</label><textarea id="message" rows="3" required></textarea></div>
-                    <button type="submit" class="btn-submit">Envoyer via WhatsApp <i class="fab fa-whatsapp"></i></button>
+                    <div class="form-group"><label>Détails (Date, durée...)</label><textarea id="message" rows="3" required></textarea></div>
+                    <button type="submit" class="btn-submit">Envoyer sur WhatsApp <i class="fab fa-whatsapp"></i></button>
                 </form>
             </div>
         </div>
