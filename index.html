@@ -3,14 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Location Voiture Antananarivo | Rija Niaina Car Services Madagascar</title>
+    <title>Location Voiture Antananarivo | Rija Niaina Car Services</title>
     <meta name="description" content="Location de voiture premium sans chauffeur à Antananarivo. SUV, Berlines et 4x4 au meilleur prix à Madagascar. Réservation rapide via WhatsApp.">
-    <meta name="keywords" content="location voiture antananarivo, louer voiture madagascar, 4x4 tana, Rija Niaina Car Services">
-
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,11 +14,7 @@
 <header class="header">
     <div class="nav-container">
         <h1 id="brand-name">RIJA NIAINA <span>SERVICES</span></h1>
-        
-        <div class="menu-burger" id="burger-btn" onclick="toggleMenu()">
-            <i class="fas fa-bars"></i>
-        </div>
-
+        <div class="menu-burger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
         <nav id="nav-menu">
             <button onclick="openTab('home')">Accueil</button>
             <button onclick="openTab('cars')">Véhicules</button>
@@ -38,93 +30,69 @@
         <div class="hero">
             <div class="hero-overlay">
                 <h2>Liberté de conduire à Antananarivo</h2>
-                <p>Location premium sans chauffeur. Explorez Madagascar à votre rythme.</p>
+                <p>Location premium sans chauffeur. Explorez Madagascar en toute autonomie.</p>
                 <div class="hero-btns">
-                    <a id="hero-call" href="tel:+261388552432" class="btn-call">📞 Appeler</a>
-                    <a id="hero-wa" href="https://wa.me/261388552432" class="btn-wa">💬 WhatsApp</a>
+                    <a id="hero-call" href="#" class="btn-call">📞 Appeler</a>
+                    <a id="hero-wa" href="#" class="btn-wa">💬 WhatsApp</a>
                 </div>
             </div>
         </div>
-
-        <div class="container" style="text-align:center;">
+        <div class="container">
             <div class="social-quick-links">
                 <a id="link-fb" href="#" target="_blank"><i class="fab fa-facebook"></i></a>
                 <a id="link-tk" href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
-                <a id="link-ig" href="#" target="_blank"><i class="fab fa-instagram"></i></a>
                 <a id="link-map" href="#" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
             </div>
 
-            <h2 class="section-title">Pourquoi choisir nos services ?</h2>
+            <div class="seo-content">
+                <h2 class="section-title">Votre partenaire de confiance à Madagascar</h2>
+                <p>Bienvenue chez <strong>Rija Niaina Car Services</strong>, expert en <strong>location de véhicule sans chauffeur à Antananarivo</strong>. Nous offrons une large gamme de véhicules adaptés à tous vos besoins : déplacements urbains, voyages d'affaires ou escapades touristiques.</p>
+                <p>Nos véhicules sont rigoureusement entretenus pour vous garantir sécurité et confort sur les routes malgaches. Profitez de tarifs compétitifs et d'un service client réactif disponible 7j/7.</p>
+            </div>
+
+            <h2 class="section-title">Pourquoi nous choisir ?</h2>
             <div id="features-grid" class="flip-grid"></div>
         </div>
     </section>
 
     <section id="cars" class="tab">
-        <div class="container">
-            <h2 class="section-title">Notre Flotte</h2>
-            <div id="cars-grid" class="grid"></div>
-        </div>
+        <div class="container"><h2 class="section-title">Notre Flotte</h2><div id="cars-grid" class="grid"></div></div>
     </section>
 
     <section id="fun" class="tab">
         <div class="container">
             <h2 class="section-title">Divertissement</h2>
-            
-            <div class="fun-section">
-                <h3>Web Radios Malagasy</h3>
-                <div id="radios-grid" class="grid-small"></div>
-            </div>
-
-            <div class="fun-section" style="margin-top:40px;">
-                <h3>Vos Playlists en route</h3>
-                <div class="playlist-btns">
-                    <a id="play-yt" href="#" target="_blank" class="play-btn yt"><i class="fab fa-youtube"></i> YouTube</a>
-                    <a id="play-sp" href="#" target="_blank" class="play-btn sp"><i class="fab fa-spotify"></i> Spotify</a>
-                    <a id="play-dz" href="#" target="_blank" class="play-btn dz"><i class="fab fa-deezer"></i> Deezer</a>
-                </div>
+            <div id="radios-grid" class="grid-small"></div>
+            <div class="playlist-btns" style="margin-top:30px;">
+                <a id="play-yt" class="play-btn yt"><i class="fab fa-youtube"></i> YouTube</a>
+                <a id="play-sp" class="play-btn sp"><i class="fab fa-spotify"></i> Spotify</a>
             </div>
         </div>
     </section>
 
     <section id="terms" class="tab">
-        <div class="container">
-            <h2 class="section-title">Conditions de Location</h2>
-            <p style="text-align:center; margin-bottom:20px; color:#666;">Cliquez sur une carte pour voir les détails.</p>
-            <div id="conditions-list" class="flip-grid"></div>
-        </div>
+        <div class="container"><h2 class="section-title">Conditions</h2><div id="conditions-list" class="flip-grid"></div></div>
     </section>
 
     <section id="contact" class="tab">
         <div class="container">
             <div class="contact-wrapper">
-                <h2 class="section-title">Demande de Réservation</h2>
+                <h2 class="section-title">Réservation</h2>
                 <form onsubmit="sendWhatsApp(); return false;">
-                    <div class="form-row">
-                        <div class="form-group"><label>Nom</label><input type="text" id="lname" placeholder="Votre nom" required></div>
-                        <div class="form-group"><label>Prénom</label><input type="text" id="fname" placeholder="Votre prénom" required></div>
-                    </div>
-                    <div class="form-group"><label>Email</label><input type="email" id="email" placeholder="votre@mail.com" required></div>
-                    <div class="form-group">
-                        <label>Motif</label>
-                        <select id="subject">
-                            <option value="Reservation">Réservation</option>
-                            <option value="Devis">Demande de devis</option>
-                            <option value="Information">Information supplémentaire</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Détails (Dates, véhicule souhaité...)</label>
-                        <textarea id="message" rows="4" placeholder="Bonjour, je souhaiterais..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn-submit">Envoyer sur WhatsApp <i class="fab fa-whatsapp"></i></button>
+                    <input type="text" id="lname" placeholder="Nom" required>
+                    <input type="text" id="fname" placeholder="Prénom" required>
+                    <select id="subject"><option value="Reservation">Réservation</option></select>
+                    <textarea id="message" rows="4" placeholder="Votre message..." required></textarea>
+                    <button type="submit" class="btn-submit">Envoyer sur WhatsApp</button>
                 </form>
             </div>
         </div>
     </section>
 </main>
 
-<footer id="main-footer">
-    </footer>
+<footer id="main-footer"></footer>
+
+<a href="tel:+261388552432" class="fab-call"><i class="fas fa-phone-alt"></i><span>Appelez-nous</span></a>
 
 <script src="script.js"></script>
 </body>
