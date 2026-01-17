@@ -1,20 +1,7 @@
 {
   "features": [
-    {
-      "titre": "Autonomie",
-      "icon": "fa-key",
-      "description": "Prenez le contrôle total de vos déplacements. Pas de chauffeur, vous êtes libre."
-    },
-    {
-      "titre": "Sécurité",
-      "icon": "fa-shield-alt",
-      "description": "Véhicules révisés rigoureusement pour votre tranquillité."
-    },
-    {
-      "titre": "Rapidité",
-      "icon": "fa-bolt",
-      "description": "Réservation simple et remise des clés en moins de 15 minutes."
-    }
+    { "titre": "Autonomie", "icon": "fa-key", "description": "Liberté totale de conduite." },
+    { "titre": "Sécurité", "icon": "fa-shield-alt", "description": "Véhicules révisés." }
   ],
   "voitures": [
     {
@@ -23,25 +10,12 @@
       "places": 5,
       "transmission": "Automatique",
       "carburant": "Essence",
-      "description": "Berline de luxe, idéale pour vos déplacements en ville et événements.",
-      "photos": ["images/cruze1.jpg", "images/cruze2.jpg"]
+      "description": "Berline luxe.",
+      "photos": ["images/cruze1.jpg"]
     }
   ],
   "conditions": [
-    {
-      "titre": "Caution",
-      "reponse": "0 Caution (sous conditions spécifiques)",
-      "icon": "fa-hand-holding-usd"
-    },
-    {
-      "titre": "Documents",
-      "reponse": "Permis de conduire B original et CIN/Passeport valides.",
-      "icon": "fa-file-signature"
-    },
-    {
-      "titre": "Restitution",
-      "reponse": "Le véhicule doit être rendu avec le même niveau de carburant qu'au départ.",
-      "icon": "fa-gas-pump"
-    }
+    { "titre": "Caution", "reponse": "0 Caution (selon conditions)", "icon": "fa-hand-holding-usd" },
+    { "titre": "Documents", "reponse": "Permis B & CIN", "icon": "fa-file-signature" }
   ]
 }
