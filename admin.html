@@ -2,92 +2,92 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>ADMIN - Rija Niaina</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <title>ADMIN - Panneau de Contrôle</title>
     <style>
-        body { font-family: 'Poppins', sans-serif; background: #f0f2f5; padding: 20px; }
-        .box { background: white; padding: 25px; border-radius: 15px; max-width: 800px; margin: 20px auto; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .item { border-left: 4px solid #0d47a1; padding: 15px; background: #f9f9f9; margin-bottom: 15px; position: relative; }
-        label { display: block; font-weight: bold; font-size: 0.8rem; margin-top: 10px; color: #555; }
-        input, textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
-        .btn { padding: 12px 20px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; margin-top: 10px; }
-        #json-output { background: #222; color: #0f0; padding: 15px; border-radius: 10px; white-space: pre-wrap; display: none; margin-top: 20px; font-family: monospace; }
+        body { font-family: sans-serif; background: #f4f4f4; padding: 20px; }
+        .box { background: white; padding: 20px; border-radius: 10px; max-width: 900px; margin: 20px auto; border-left: 5px solid #0d47a1; }
+        input, textarea { width: 100%; padding: 8px; margin: 5px 0 15px; border: 1px solid #ddd; border-radius: 5px; }
+        .btn { padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; color: white; font-weight: bold; }
+        pre { background: #222; color: #0f0; padding: 15px; border-radius: 5px; overflow-x: auto; }
     </style>
 </head>
 <body>
+
     <div class="box">
-        <h2>Apparence du Site</h2>
-        <div class="item">
-            <label>Couleur Principale</label><input type="color" id="theme-primary">
-            <label>Couleur Accent (WhatsApp)</label><input type="color" id="theme-accent">
-            <label>Image de fond Hero (Chemin ou URL)</label><input type="text" id="theme-bg">
-            <button class="btn" style="background:#333; color:white" onclick="generateConfig()">GÉNÉRER CONFIG.JSON</button>
-        </div>
+        <h2>1. Apparence & Liens (config.json)</h2>
+        <label>Couleur Primaire</label><input type="color" id="c-primary">
+        <label>Image Hero (URL)</label><input type="text" id="c-hero">
+        <label>Lien Facebook</label><input type="text" id="s-fb">
+        <label>Lien YouTube Playlist</label><input type="text" id="p-yt">
+        <label>Lien Spotify Playlist</label><input type="text" id="p-sp">
+        <button class="btn" style="background:#0d47a1" onclick="genConfig()">Générer CONFIG.JSON</button>
     </div>
+
     <div class="box">
-        <h2>Gestion des Voitures</h2>
-        <div id="cars-container"></div>
-        <button class="btn" style="background:#25d366; color:white" onclick="addCarForm()">+ Ajouter une voiture</button>
-        <button class="btn" style="background:#0d47a1; color:white" onclick="generateData()">GÉNÉRER DATA.JSON</button>
-        <div id="json-output"></div>
+        <h2>2. Web Radios (data.json)</h2>
+        <div id="radio-list"></div>
+        <button class="btn" style="background:#25d366" onclick="addRadioForm()">+ Ajouter une Radio</button>
+        <button class="btn" style="background:#333" onclick="genData()">Générer DATA.JSON</button>
+    </div>
+
+    <div class="box" id="result-box" style="display:none">
+        <h2>Résultat à copier</h2>
+        <pre id="output"></pre>
     </div>
 
     <script>
-        async function init() {
-            try {
-                const r1 = await fetch('config.json');
-                const c = await r1.json();
-                document.getElementById('theme-primary').value = c.theme.primary;
-                document.getElementById('theme-accent').value = c.theme.accent;
-                document.getElementById('theme-bg').value = c.theme.hero_bg;
+        async function load() {
+            const r1 = await fetch('config.json');
+            const c = await r1.json();
+            document.getElementById('c-primary').value = c.theme.primary;
+            document.getElementById('c-hero').value = c.theme.hero_bg;
+            document.getElementById('s-fb').value = c.social.facebook;
+            document.getElementById('p-yt').value = c.playlists.youtube;
+            document.getElementById('p-sp').value = c.playlists.spotify;
 
-                const r2 = await fetch('data.json');
-                const d = await r2.json();
-                d.voitures.forEach(v => addCarForm(v));
-            } catch(e) { addCarForm(); }
+            const r2 = await fetch('data.json');
+            const d = await r2.json();
+            d.radios.forEach(r => addRadioForm(r));
         }
 
-        async function generateConfig() {
-            const res = await fetch('config.json');
-            let config = await res.json();
-            config.theme.primary = document.getElementById('theme-primary').value;
-            config.theme.accent = document.getElementById('theme-accent').value;
-            config.theme.hero_bg = document.getElementById('theme-bg').value;
-            showOutput(config);
-        }
-
-        function addCarForm(v = {}) {
+        function addRadioForm(r = {}) {
             const div = document.createElement('div');
-            div.className = 'item';
+            div.className = 'radio-item';
             div.innerHTML = `
-                <label>Modèle</label><input type="text" class="v-nom" value="${v.nom || ''}">
-                <label>Prix</label><input type="text" class="v-prix" value="${v.prix || ''}">
-                <label>Description</label><textarea class="v-desc">${v.description || ''}</textarea>
-                <label>Photos (URL, URL...)</label><input type="text" class="v-pics" value="${(v.photos || []).join(', ')}">
-                <button class="btn" style="background:red; color:white" onclick="this.parentElement.remove()">Supprimer</button>
+                <hr><label>Nom Radio</label><input type="text" class="r-nom" value="${r.nom || ''}">
+                <label>URL Stream</label><input type="text" class="r-url" value="${r.url || ''}">
+                <label>Logo URL</label><input type="text" class="r-logo" value="${r.logo || ''}">
             `;
-            document.getElementById('cars-container').appendChild(div);
+            document.getElementById('radio-list').appendChild(div);
         }
 
-        async function generateData() {
-            const res = await fetch('data.json');
-            let data = await res.json();
-            data.voitures = Array.from(document.querySelectorAll('#cars-container .item')).map(el => ({
-                nom: el.querySelector('.v-nom').value,
-                prix: el.querySelector('.v-prix').value,
-                places: 5, transmission: "Auto", carburant: "Essence",
-                description: el.querySelector('.v-desc').value,
-                photos: el.querySelector('.v-pics').value.split(',').map(s => s.trim())
+        async function genConfig() {
+            const r = await fetch('config.json');
+            let c = await r.json();
+            c.theme.primary = document.getElementById('c-primary').value;
+            c.theme.hero_bg = document.getElementById('c-hero').value;
+            c.social.facebook = document.getElementById('s-fb').value;
+            c.playlists.youtube = document.getElementById('p-yt').value;
+            c.playlists.spotify = document.getElementById('p-sp').value;
+            show(c);
+        }
+
+        async function genData() {
+            const r = await fetch('data.json');
+            let d = await r.json();
+            d.radios = Array.from(document.querySelectorAll('.radio-item')).map(el => ({
+                nom: el.querySelector('.r-nom').value,
+                url: el.querySelector('.r-url').value,
+                logo: el.querySelector('.r-logo').value
             }));
-            showOutput(data);
+            show(d);
         }
 
-        function showOutput(obj) {
-            const out = document.getElementById('json-output');
-            out.innerText = JSON.stringify(obj, null, 2);
-            out.style.display = 'block';
+        function show(obj) {
+            document.getElementById('result-box').style.display = 'block';
+            document.getElementById('output').innerText = JSON.stringify(obj, null, 2);
         }
-        init();
+        load();
     </script>
 </body>
 </html>
