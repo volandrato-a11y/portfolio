@@ -1,7 +1,7 @@
 {
   "features": [
     { "titre": "Autonomie", "icon": "fa-key", "description": "Liberté totale de conduite sans chauffeur." },
-    { "titre": "Sécurité", "icon": "fa-shield-alt", "description": "Véhicules révisés et entretenus régulièrement." }
+    { "titre": "Sécurité", "icon": "fa-shield-alt", "description": "Véhicules révisés avant chaque départ." }
   ],
   "voitures": [
     {
@@ -10,7 +10,6 @@
       "places": 5,
       "transmission": "Automatique",
       "carburant": "Essence",
-      "description": "Berline luxueuse et confortable, idéale pour la ville.",
       "photos": ["images/cruze1.jpg"]
     },
     {
@@ -19,7 +18,6 @@
       "places": 5,
       "transmission": "Manuelle",
       "carburant": "Diesel",
-      "description": "SUV polyvalent, parfait pour les routes de Madagascar.",
       "photos": ["images/duster.jpg"]
     },
     {
@@ -28,20 +26,19 @@
       "places": 5,
       "transmission": "Manuelle",
       "carburant": "Essence",
-      "description": "Citadine compacte et économique pour Antananarivo.",
       "photos": ["images/i10.jpg"]
     }
   ],
   "radios": [
-    { "nom": "RDB Madagascar", "url": "https://stream.radio.mg/rdb", "logo": "https://radio.mg/logo_rdb.png" },
-    { "nom": "RNA", "url": "https://stream.radio.mg/rna", "logo": "https://radio.mg/logo_rna.png" }
+    { "nom": "RDB Madagascar", "url": "https://stream.radio.mg/rdb", "logo": "images/rdb.png" },
+    { "nom": "RNA Radio", "url": "https://stream.radio.mg/rna", "logo": "images/rna.png" }
   ],
   "conditions": [
     { "titre": "Âge Requis", "reponse": "Le conducteur doit avoir au moins 23 ans.", "icon": "fa-user-check" },
-    { "titre": "Permis de conduire", "reponse": "Permis B valide depuis plus de 2 ans.", "icon": "fa-id-card" },
-    { "titre": "Caution", "reponse": "Un dépôt de garantie de 1 000 000 Ar est demandé.", "icon": "fa-hand-holding-usd" },
-    { "titre": "Documents", "reponse": "Original de la CIN (ou Passeport) et justificatif de domicile.", "icon": "fa-file-signature" },
-    { "titre": "Carburant", "reponse": "Véhicule livré avec le plein, à restituer avec le plein.", "icon": "fa-gas-pump" },
-    { "titre": "Zone autorisée", "reponse": "Circulation sur routes goudronnées uniquement.", "icon": "fa-map-marked-alt" }
+    { "titre": "Permis B", "reponse": "Valide depuis plus de 2 ans minimum.", "icon": "fa-id-card" },
+    { "titre": "Caution", "reponse": "Dépôt de 1 000 000 Ar (restituable).", "icon": "fa-wallet" },
+    { "titre": "Documents", "reponse": "Original CIN/Passeport et justificatif de domicile.", "icon": "fa-file-signature" },
+    { "titre": "Carburant", "reponse": "Politique Plein à Plein (rendu avec le plein).", "icon": "fa-gas-pump" },
+    { "titre": "Zone", "reponse": "Autorisé sur toutes les routes goudronnées de Mada.", "icon": "fa-map-marked-alt" }
   ]
 }
