@@ -1,7 +1,7 @@
 {
   "theme": {
     "site_bg": "images/soarano.png",
-    "primary": "#0d47a1",
+    "primary": "#1d3c6b",
     "accent": "#1d2e23",
     "text_main": "#1a1a1a",
     "border_color": "#dddddd",
@@ -27,3 +27,4 @@
   }
 
 }
+
