@@ -27,6 +27,14 @@
       "transmission": "Manuelle",
       "carburant": "Essence",
       "photos": ["images/i10.jpg"]
+    },
+        {
+      "nom": "Hyundai Getz",
+      "prix": "100 000 Ar/jour",
+      "places": 5,
+      "transmission": "Manuelle",
+      "carburant": "Essence",
+      "photos": ["images/getz.jpg"]
     }
   ],
   "radios": [
@@ -42,3 +50,4 @@
     { "titre": "Zone", "reponse": "Autorisé sur toutes les routes goudronnées de Mada.", "icon": "fa-map-marked-alt" }
   ]
 }
+
