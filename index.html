@@ -80,18 +80,48 @@
         </div>
     </section>
 
-    <section id="contact" class="tab">
-        <div class="container">
-            <div class="contact-wrapper">
-                <h2 class="section-title">Réservation</h2>
-                <form onsubmit="sendWhatsApp(); return false;">
-                    <input type="text" id="lname" placeholder="Nom" required>
-                    <textarea id="message" rows="4" placeholder="Quel véhicule et quelles dates ?" required></textarea>
-                    <button type="submit" class="btn-submit">Réserver sur WhatsApp</button>
-                </form>
-            </div>
+<section id="contact" class="tab">
+    <div class="container">
+        <div class="contact-wrapper">
+            <h2 class="section-title">Demande de Réservation</h2>
+            <form onsubmit="sendWhatsApp(); return false;">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Nom</label>
+                        <input type="text" id="lname" placeholder="Votre nom" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Prénom</label>
+                        <input type="text" id="fname" placeholder="Votre prénom" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="email" placeholder="votre@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Motif</label>
+                    <select id="subject">
+                        <option value="Reservation">Réservation</option>
+                        <option value="Devis">Demande de devis</option>
+                        <option value="Information">Information supplémentaire</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Détails (Dates, véhicule souhaité...)</label>
+                    <textarea id="message" rows="4" placeholder="Ex: Bonjour, je souhaite louer la Chevrolet du 10 au 15 Mars..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                    Envoyer sur WhatsApp <i class="fab fa-whatsapp"></i>
+                </button>
+            </form>
         </div>
-    </section>
+    </div>
+</section>
 </main>
 
 <footer id="main-footer"></footer>
@@ -104,3 +134,4 @@
 <script src="script.js"></script>
 </body>
 </html>
+
