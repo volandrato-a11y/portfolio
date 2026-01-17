@@ -14,7 +14,12 @@ async function initSite() {
         document.documentElement.style.setProperty('--accent', siteConfig.theme.accent);
         
         // Header
-        document.getElementById('brand-name').innerHTML = `${siteConfig.header.nom} <span>${siteConfig.header.suffixe}</span>`;
+        // Dans la fonction async function initSite()
+
+document.getElementById('brand-name').innerHTML = `
+    <img src="${siteConfig.header.logo_url}" alt="Logo" style="height: 40px; vertical-align: middle; margin-right: 10px;">
+    ${siteConfig.header.nom} <span>${siteConfig.header.suffixe}</span>
+`;
 // Dans la fonction async function initSite() ...
 document.getElementById('footer-info').innerHTML = `
     <p><b>${siteConfig.header.nom}</b><br>${siteConfig.footer.adresse}</p>
@@ -210,3 +215,4 @@ function sendWhatsApp(e) {
     window.open(`https://wa.me/${siteConfig.footer.whatsapp}?text=${msg}`, '_blank');
 
 }
+
