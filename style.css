@@ -1,330 +1,42 @@
-/* --- VARIABLES ET RESET --- */
-:root {
-    --primary: #0d47a1;
-    --accent: #25d366;
-    --dark: #1a1a1a;
-    --light: #f4f7f9;
-    --white: #ffffff;
-    --transition: 0.3s ease;
-}
+:root { --primary: #0d47a1; --accent: #25d366; --light: #f4f7f9; --dark: #1a1a1a; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Poppins', sans-serif; background: var(--light); padding-bottom: 60px; }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* Onglets */
+.tab { display: none; padding-top: 80px; animation: fadeIn 0.4s; }
+.tab.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-body {
-    font-family: 'Poppins', sans-serif;
-    background: var(--light);
-    color: var(--dark);
-    line-height: 1.6;
-    overflow-x: hidden;
-}
+/* Header */
+.header { position: fixed; top: 0; width: 100%; height: 70px; background: white; z-index: 2000; display: flex; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+.nav-container { width: 90%; margin: auto; display: flex; justify-content: space-between; align-items: center; }
+#nav-menu { display: flex; gap: 10px; }
+#nav-menu button { background: none; border: none; padding: 10px; cursor: pointer; font-weight: 600; }
+.nav-special { background: var(--primary) !important; color: white !important; border-radius: 20px; }
 
-/* --- SYSTEME D'ONGLETS (TABS) --- */
-/* Important : C'est ce qui empêche tout de défiler sur la même page */
-.tab {
-    display: none; /* Cache les sections par défaut */
-    width: 100%;
-    min-height: 80vh;
-    padding-top: 90px; /* Espace pour le header fixe */
-    animation: fadeIn 0.5s ease-in-out;
-}
+/* Hero & SEO */
+.hero { height: 50vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/hero.jpg') center/cover; color: white; display: flex; align-items: center; justify-content: center; text-align: center; border-radius: 0 0 40px 40px; }
+.seo-content { margin: 40px 0; line-height: 1.8; color: #444; }
 
-.tab.active {
-    display: block; /* Affiche uniquement la section active */
-}
+/* Grilles */
+.container { width: 90%; max-width: 1200px; margin: auto; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.flip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+/* Voitures */
+.car-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+.car-info { padding: 15px; }
+.car-specs { display: flex; gap: 10px; font-size: 0.8rem; color: var(--primary); margin: 10px 0; font-weight: bold; }
+.car-price-tag { background: var(--primary); color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.9rem; }
 
-/* --- HEADER ET NAVIGATION --- */
-.header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 75px;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    z-index: 3000;
-    display: flex;
-    align-items: center;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-}
-
-.nav-container {
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#brand-name {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--primary);
-    text-transform: uppercase;
-}
-
-#brand-name span {
-    color: var(--dark);
-    font-weight: 400;
-}
-
-#nav-menu {
-    display: flex;
-    gap: 15px;
-}
-
-#nav-menu button {
-    background: none;
-    border: none;
-    padding: 10px 15px;
-    font-weight: 600;
-    font-family: inherit;
-    cursor: pointer;
-    transition: var(--transition);
-    border-radius: 8px;
-}
-
-#nav-menu button:hover {
-    color: var(--primary);
-    background: rgba(13, 71, 161, 0.05);
-}
-
-.nav-special {
-    background: var(--primary) !important;
-    color: white !important;
-    border-radius: 25px !important;
-}
-
-/* --- MENU BURGER (MOBILE) --- */
-.menu-burger {
-    display: none;
-    font-size: 24px;
-    cursor: pointer;
-    color: var(--primary);
-}
-
-@media (max-width: 768px) {
-    .menu-burger { display: block; }
-
-    #nav-menu {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 75%;
-        height: 100vh;
-        background: white;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        transition: 0.4s ease;
-        box-shadow: -10px 0 20px rgba(0,0,0,0.1);
-    }
-
-    #nav-menu.active {
-        right: 0;
-    }
-
-    #nav-menu button {
-        font-size: 1.2rem;
-        width: 80%;
-    }
-}
-
-/* --- HERO SECTION --- */
-.hero {
-    height: 65vh;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/chevrolet_cruze.jpg') center/cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    border-radius: 0 0 50px 50px;
-    margin-bottom: 50px;
-}
-
-.hero-overlay h2 { font-size: 2.8rem; margin-bottom: 15px; }
-.hero-btns { display: flex; gap: 15px; justify-content: center; margin-top: 25px; }
-
-.btn-call, .btn-wa {
-    padding: 12px 25px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: bold;
-    color: white;
-    transition: var(--transition);
-}
-.btn-call { background: #d32f2f; }
-.btn-wa { background: var(--accent); }
-
-/* --- GRIDS ET CARTES --- */
-.container { width: 90%; max-width: 1200px; margin: auto; padding: 40px 0; }
-.section-title { text-align: center; margin-bottom: 35px; font-size: 2rem; position: relative; }
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
-
-/* CAR CARDS */
-.car-card {
-    background: white;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-}
-
-.slider img { width: 100%; height: 200px; object-fit: cover; }
-.car-info { padding: 20px; }
-.car-price-tag { background: var(--primary); color: white; padding: 5px 15px; border-radius: 10px; display: inline-block; margin-bottom: 10px; }
-
-/* FLIP CARDS (POUR POURQUOI NOUS ET CONDITIONS) */
-.flip-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.flip-card {
-    height: 200px;
-    position: relative;
-    perspective: 1000px;
-    cursor: pointer;
-}
-
-.flip-front, .flip-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 20px;
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    transition: 0.6s;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-.flip-front { background: white; }
-.flip-front i { font-size: 40px; color: var(--primary); margin-bottom: 15px; }
+/* Flip Cards */
+.flip-card { height: 180px; perspective: 1000px; cursor: pointer; }
+.flip-front, .flip-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 15px; display: flex; align-items: center; justify-content: center; flex-direction: column; padding: 20px; transition: 0.6s; text-align: center; }
 .flip-back { background: var(--primary); color: white; transform: rotateY(180deg); }
-
 .flip-card.flipped .flip-front { transform: rotateY(180deg); }
 .flip-card.flipped .flip-back { transform: rotateY(360deg); }
 
-/* --- DIVERTISSEMENT --- */
-.grid-small {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-}
+/* Bouton Flottant */
+.fab-call { position: fixed; bottom: 20px; right: 20px; background: #d32f2f; color: white; padding: 12px 20px; border-radius: 30px; display: flex; align-items: center; gap: 10px; text-decoration: none; z-index: 3000; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
 
-.radio-card {
-    background: white;
-    padding: 15px;
-    border-radius: 15px;
-    text-align: center;
-}
-
-.playlist-btns {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-.play-btn {
-    padding: 15px 30px;
-    border-radius: 12px;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-.yt { background: #ff0000; }
-.sp { background: #1DB954; }
-.dz { background: #323232; }
-
-/* --- FORMULAIRE --- */
-.contact-wrapper {
-    background: white;
-    padding: 40px;
-    border-radius: 30px;
-    max-width: 700px;
-    margin: auto;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.05);
-}
-
-.form-group { margin-bottom: 20px; }
-.form-group label { display: block; margin-bottom: 8px; font-weight: 600; }
-input, select, textarea {
-    width: 100%;
-    padding: 15px;
-    border: 1.5px solid #eee;
-    border-radius: 12px;
-    font-family: inherit;
-    outline: none;
-}
-input:focus { border-color: var(--primary); }
-
-.btn-submit {
-    width: 100%;
-    padding: 18px;
-    background: var(--accent);
-    color: white;
-    border: none;
-    border-radius: 12px;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 1.1rem;
-}
-
-/* --- FOOTER --- */
-footer {
-    background: var(--dark);
-    color: white;
-    padding: 50px 20px;
-    text-align: center;
-    margin-top: 60px;
-}
-
-/* --- RESEAUX SOCIAUX --- */
-.social-quick-links {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: -30px;
-    margin-bottom: 40px;
-}
-
-.social-quick-links a {
-    width: 50px;
-    height: 50px;
-    background: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    color: var(--primary);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    text-decoration: none;
-    transition: var(--transition);
-}
-
-.social-quick-links a:hover {
-    transform: translateY(-5px);
-    background: var(--primary);
-    color: white;
-}
+footer { background: var(--dark); color: white; padding: 40px 0; text-align: center; margin-top: 40px; }
