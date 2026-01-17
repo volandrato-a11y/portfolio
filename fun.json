@@ -13,6 +13,28 @@
       "nom": "RNA Radio", 
       "url": "https://stream.radio.mg/rna", 
       "logo": "images/rna.png" 
+    },
+    { 
+      "nom": "Radio Fahazavana", 
+      "url": "http://stream.zeno.fm/t32b2v9p5k8uv", 
+      "logo": "images/logo.png" 
+    }
+  ],
+  "playlists": [
+    {
+      "nom": "Top Hits Madagascar",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/2048px-Spotify_logo_without_text.svg.png",
+      "link": "https://open.spotify.com/playlist/37i9dQZEVXbMDoHDwVN2tF"
+    },
+    {
+      "nom": "Ambiance Tropicale",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1024px-YouTube_full-color_icon_%282017%29.svg.png",
+      "link": "https://www.youtube.com/playlist?list=PLw0Ld7Wj9W"
+    },
+    {
+      "nom": "Deezer Flow",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Deezer_logo_circle.svg/1200px-Deezer_logo_circle.svg.png",
+      "link": "https://www.deezer.com/fr/playlist/123456"
     }
   ]
 }
