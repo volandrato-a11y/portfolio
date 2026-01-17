@@ -11,7 +11,7 @@
     },
     {
       "nom": "Chevrolet Captiva",
-      "prix": "160 000 Ar / jour",
+      "prix": "180 000 Ar / jour",
       "places": 7,
       "transmission": "Automatique",
       "carburant": "Diesel",
@@ -37,4 +37,5 @@
       "photos": ["images/getz.jpg"]
     }
   ]
+
 }
