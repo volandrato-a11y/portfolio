@@ -36,45 +36,25 @@
                 </div>
             </div>
         </div>
-        
         <div class="why-section">
             <h3>Pourquoi nous ?</h3>
-            <p style="color: #666; margin-bottom: 20px;">Cliquez sur une carte pour en savoir plus</p>
-            <div class="feat-grid">
-                </div>
+            <p style="margin-bottom:20px; color:#666;">Cliquez sur une carte pour voir les détails</p>
+            <div id="features-grid" class="feat-grid"></div>
         </div>
     </section>
 
-    <section id="cars" class="tab">
-        <div class="container">
-            <h2>Nos Véhicules</h2>
-            <div id="cars-grid" class="grid"></div>
-        </div>
-    </section>
-
-    <section id="radio" class="tab">
-        <div class="container">
-            <h2>Divertissement WebRadio</h2>
-            <div id="radio-grid" class="grid"></div>
-        </div>
-    </section>
-
-    <section id="terms" class="tab">
-        <div class="container">
-            <h2>Conditions de Location</h2>
-            <div id="conditions-list"></div>
-        </div>
-    </section>
+    <section id="cars" class="tab"><div class="container"><h2>Nos Véhicules</h2><div id="cars-grid" class="grid"></div></div></section>
+    <section id="radio" class="tab"><div class="container"><h2>WebRadio</h2><div id="radio-grid" class="grid"></div></div></section>
+    <section id="terms" class="tab"><div class="container"><h2>Conditions</h2><div id="conditions-list"></div></div></section>
     
     <section id="contact" class="tab">
         <div class="container">
-            <h2>Contactez-nous</h2>
+            <h2>Contact</h2>
             <form onsubmit="sendWhatsApp(); return false;" class="modern-form">
                 <input type="text" id="name" placeholder="Votre Nom" required>
                 <select id="subject">
-                    <option value="Reservez une voiture">Réservez une voiture</option>
-                    <option value="Demande de partenariat">Demande de partenariat</option>
-                    <option value="Suggestion">Suggestion</option>
+                    <option value="Réservation">Réservez une voiture</option>
+                    <option value="Partenariat">Demande de partenariat</option>
                 </select>
                 <textarea id="message" placeholder="Votre message..." required></textarea>
                 <button type="submit" class="btn-submit">Envoyer via WhatsApp</button>
@@ -85,9 +65,7 @@
 
 <footer id="main-footer"></footer>
 
-<a id="floating-call" href="#" class="floating-btn">
-    <i class="fas fa-phone"></i>
-</a>
+<a id="floating-call" href="#" class="floating-btn"><i class="fas fa-phone"></i></a>
 
 <script src="script.js"></script>
 </body>

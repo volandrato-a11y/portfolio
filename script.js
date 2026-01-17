@@ -1,8 +1,8 @@
 let siteConfig = {};
 
-document.addEventListener('DOMContentLoaded', () => {
-    loadConfig();
-    loadData();
+document.addEventListener('DOMContentLoaded', async () => {
+    await loadConfig(); // On attend la config avant de charger le reste
+    await loadData();
 });
 
 function toggleMenu() { document.getElementById('nav-menu').classList.toggle('open'); }
@@ -19,7 +19,7 @@ async function loadConfig() {
         const res = await fetch('config.json');
         siteConfig = await res.json();
 
-        // Header
+        // Remplissage Header
         document.getElementById('brand-name').innerHTML = `${siteConfig.header.nom} <span>${siteConfig.header.suffixe}</span>`;
         document.getElementById('hero-call').href = `tel:${siteConfig.header.telephone}`;
         document.getElementById('floating-call').href = `tel:${siteConfig.header.telephone}`;
@@ -27,7 +27,7 @@ async function loadConfig() {
         const waNum = siteConfig.footer.whatsapp.replace(/\s+/g, '');
         document.getElementById('hero-wa').href = `https://wa.me/${waNum}`;
 
-        // Footer
+        // Remplissage Footer
         document.getElementById('main-footer').innerHTML = `
             <div class="social-links">
                 <a href="${siteConfig.footer.facebook}" target="_blank"><i class="fab fa-facebook"></i></a>
@@ -45,8 +45,8 @@ async function loadData() {
         const res = await fetch('data.json');
         const data = await res.json();
 
-        // Pourquoi nous (Flip Cards)
-        const featGrid = document.querySelector('.feat-grid');
+        // 1. Pourquoi nous (Flip Cards)
+        const featGrid = document.getElementById('features-grid');
         data.features.forEach(f => {
             const card = document.createElement('div');
             card.className = 'feat-card';
@@ -58,7 +58,7 @@ async function loadData() {
             featGrid.appendChild(card);
         });
 
-        // Voitures
+        // 2. Voitures
         const carGrid = document.getElementById('cars-grid');
         data.voitures.forEach(car => {
             carGrid.innerHTML += `
@@ -68,25 +68,28 @@ async function loadData() {
                         <h3>${car.nom}</h3>
                         <p style="font-size:0.85rem; color:#666;">💺 ${car.places} places | ⚙️ ${car.transmission}</p>
                         <div class="car-btns">
-                            <button class="nav-special" style="border:none; cursor:pointer" onclick="openTab('contact')">Réserver</button>
+                            <button class="nav-special" style="border:none; cursor:pointer;" onclick="openTab('contact')">Réserver</button>
                             <a href="tel:${siteConfig.header.telephone}" class="btn-car-call">📞 Appeler</a>
                         </div>
                     </div>
                 </div>`;
         });
 
-        // Radios
+        // 3. Radios
         const radioGrid = document.getElementById('radio-grid');
         data.radios.forEach(r => {
             radioGrid.innerHTML += `<div class="radio-card" style="padding:20px; text-align:center"><img src="${r.logo}" height="60"><br><h4>${r.nom}</h4><audio controls src="${r.url}" style="width:100%"></audio></div>`;
         });
 
-        // Conditions
+        // 4. Conditions (Format 1- Titre * Description)
         const condList = document.getElementById('conditions-list');
         data.conditions.forEach((c, i) => {
-            condList.innerHTML += `<div class="condition-item"><h3>${i+1}- ${c.titre}</h3><ul>${c.details.map(d => `<li>${d}</li>`).join('')}</ul></div>`;
+            condList.innerHTML += `
+                <div class="condition-item">
+                    <h3>${i+1}- ${c.titre}</h3>
+                    <ul>${c.details.map(d => `<li>${d}</li>`).join('')}</ul>
+                </div>`;
         });
-
     } catch (e) { console.error("Erreur data:", e); }
 }
 

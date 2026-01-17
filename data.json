@@ -3,17 +3,17 @@
     {
       "titre": "Autonomie",
       "icon": "fa-key",
-      "description": "Prenez le contrôle total de vos déplacements. Pas de chauffeur, vous êtes libre d'aller où vous voulez, quand vous voulez."
+      "description": "Prenez le contrôle total de vos déplacements. Pas de chauffeur, vous êtes libre d'aller où vous voulez."
     },
     {
       "titre": "Sécurité",
       "icon": "fa-shield-alt",
-      "description": "Tous nos véhicules sont rigoureusement révisés. Nous garantissons une mécanique fiable pour votre tranquillité."
+      "description": "Véhicules révisés rigoureusement. Nous garantissons une mécanique fiable pour votre tranquillité."
     },
     {
       "titre": "Rapidité",
       "icon": "fa-bolt",
-      "description": "Réservation simple et remise des clés en moins de 15 minutes. Nous valorisons votre temps."
+      "description": "Réservation simple et remise des clés en moins de 15 minutes. Votre temps est précieux."
     }
   ],
   "voitures": [
@@ -36,7 +36,11 @@
   "conditions": [
     {
       "titre": "Documents requis",
-      "details": ["Permis de conduire (+2 ans)", "Copie CIN ou Passeport", "Justificatif de domicile"]
+      "details": ["Permis de conduire valide", "Copie CIN ou Passeport", "Justificatif de domicile"]
+    },
+    {
+      "titre": "Paiement & Caution",
+      "details": ["Caution obligatoire au départ", "Paiement total à la remise des clés"]
     }
   ]
 }
