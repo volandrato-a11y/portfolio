@@ -25,6 +25,15 @@
       "carburant": "Essence",
       "description": "Berline de luxe, idéale pour vos déplacements en ville et événements.",
       "photos": ["images/cruze1.jpg", "images/cruze2.jpg"]
+    },
+        {
+      "nom": "Chevrolet CAPTIVA",
+      "prix": "180 000 Ar/jour",
+      "places": 7,
+      "transmission": "Automatique",
+      "carburant": "Diesel",
+      "description": "SUV de luxe, idéale pour vos déplacements en ville et événements.",
+      "photos": ["images/cruze1.jpg", "images/cruze2.jpg"]
     }
   ],
   "radios": [
@@ -44,4 +53,5 @@
       "details": ["Caution obligatoire au départ", "Paiement total à la remise des clés"]
     }
   ]
+
 }
