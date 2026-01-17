@@ -16,6 +16,15 @@
 </head>
 <body>
     <div class="box">
+        <h2>Apparence du Site</h2>
+        <div class="item">
+            <label>Couleur Principale</label><input type="color" id="theme-primary">
+            <label>Couleur Accent (WhatsApp)</label><input type="color" id="theme-accent">
+            <label>Image de fond Hero (Chemin ou URL)</label><input type="text" id="theme-bg">
+            <button class="btn" style="background:#333; color:white" onclick="generateConfig()">GÉNÉRER CONFIG.JSON</button>
+        </div>
+    </div>
+    <div class="box">
         <h2>Gestion des Voitures</h2>
         <div id="cars-container"></div>
         <button class="btn" style="background:#25d366; color:white" onclick="addCarForm()">+ Ajouter une voiture</button>
@@ -26,24 +35,36 @@
     <script>
         async function init() {
             try {
-                const res = await fetch('data.json');
-                const data = await res.json();
-                data.voitures.forEach(v => addCarForm(v));
+                const r1 = await fetch('config.json');
+                const c = await r1.json();
+                document.getElementById('theme-primary').value = c.theme.primary;
+                document.getElementById('theme-accent').value = c.theme.accent;
+                document.getElementById('theme-bg').value = c.theme.hero_bg;
+
+                const r2 = await fetch('data.json');
+                const d = await r2.json();
+                d.voitures.forEach(v => addCarForm(v));
             } catch(e) { addCarForm(); }
+        }
+
+        async function generateConfig() {
+            const res = await fetch('config.json');
+            let config = await res.json();
+            config.theme.primary = document.getElementById('theme-primary').value;
+            config.theme.accent = document.getElementById('theme-accent').value;
+            config.theme.hero_bg = document.getElementById('theme-bg').value;
+            showOutput(config);
         }
 
         function addCarForm(v = {}) {
             const div = document.createElement('div');
             div.className = 'item';
             div.innerHTML = `
-                <button style="position:absolute; right:10px; top:10px; background:red; color:white; border:none; cursor:pointer" onclick="this.parentElement.remove()">X</button>
-                <label>Nom du modèle</label><input type="text" class="v-nom" value="${v.nom || ''}">
-                <label>Prix (ex: 150 000 Ar/jour)</label><input type="text" class="v-prix" value="${v.prix || ''}">
-                <label>Places</label><input type="number" class="v-places" value="${v.places || 5}">
-                <label>Transmission</label><input type="text" class="v-trans" value="${v.transmission || 'Automatique'}">
-                <label>Carburant</label><input type="text" class="v-carb" value="${v.carburant || 'Essence'}">
+                <label>Modèle</label><input type="text" class="v-nom" value="${v.nom || ''}">
+                <label>Prix</label><input type="text" class="v-prix" value="${v.prix || ''}">
                 <label>Description</label><textarea class="v-desc">${v.description || ''}</textarea>
-                <label>Photos (séparées par des virgules)</label><input type="text" class="v-pics" value="${(v.photos || []).join(', ')}">
+                <label>Photos (URL, URL...)</label><input type="text" class="v-pics" value="${(v.photos || []).join(', ')}">
+                <button class="btn" style="background:red; color:white" onclick="this.parentElement.remove()">Supprimer</button>
             `;
             document.getElementById('cars-container').appendChild(div);
         }
@@ -51,21 +72,20 @@
         async function generateData() {
             const res = await fetch('data.json');
             let data = await res.json();
-            
-            data.voitures = Array.from(document.querySelectorAll('.item')).map(el => ({
+            data.voitures = Array.from(document.querySelectorAll('#cars-container .item')).map(el => ({
                 nom: el.querySelector('.v-nom').value,
                 prix: el.querySelector('.v-prix').value,
-                places: parseInt(el.querySelector('.v-places').value),
-                transmission: el.querySelector('.v-trans').value,
-                carburant: el.querySelector('.v-carb').value,
+                places: 5, transmission: "Auto", carburant: "Essence",
                 description: el.querySelector('.v-desc').value,
-                photos: el.querySelector('.v-pics').value.split(',').map(s => s.trim()).filter(s => s !== "")
+                photos: el.querySelector('.v-pics').value.split(',').map(s => s.trim())
             }));
+            showOutput(data);
+        }
 
+        function showOutput(obj) {
             const out = document.getElementById('json-output');
-            out.innerText = JSON.stringify(data, null, 2);
+            out.innerText = JSON.stringify(obj, null, 2);
             out.style.display = 'block';
-            window.scrollTo(0, document.body.scrollHeight);
         }
         init();
     </script>
