@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>ADMIN - Rija Niaina</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #f0f2f5; padding: 20px; }
+        .box { background: white; padding: 25px; border-radius: 15px; max-width: 800px; margin: 20px auto; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .item { border-left: 4px solid #0d47a1; padding: 15px; background: #f9f9f9; margin-bottom: 15px; position: relative; }
+        label { display: block; font-weight: bold; font-size: 0.8rem; margin-top: 10px; color: #555; }
+        input, textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+        .btn { padding: 12px 20px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; margin-top: 10px; }
+        #json-output { background: #222; color: #0f0; padding: 15px; border-radius: 10px; white-space: pre-wrap; display: none; margin-top: 20px; font-family: monospace; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>Gestion des Voitures</h2>
+        <div id="cars-container"></div>
+        <button class="btn" style="background:#25d366; color:white" onclick="addCarForm()">+ Ajouter une voiture</button>
+        <button class="btn" style="background:#0d47a1; color:white" onclick="generateData()">GÉNÉRER DATA.JSON</button>
+        <div id="json-output"></div>
+    </div>
+
+    <script>
+        async function init() {
+            try {
+                const res = await fetch('data.json');
+                const data = await res.json();
+                data.voitures.forEach(v => addCarForm(v));
+            } catch(e) { addCarForm(); }
+        }
+
+        function addCarForm(v = {}) {
+            const div = document.createElement('div');
+            div.className = 'item';
+            div.innerHTML = `
+                <button style="position:absolute; right:10px; top:10px; background:red; color:white; border:none; cursor:pointer" onclick="this.parentElement.remove()">X</button>
+                <label>Nom du modèle</label><input type="text" class="v-nom" value="${v.nom || ''}">
+                <label>Prix (ex: 150 000 Ar/jour)</label><input type="text" class="v-prix" value="${v.prix || ''}">
+                <label>Places</label><input type="number" class="v-places" value="${v.places || 5}">
+                <label>Transmission</label><input type="text" class="v-trans" value="${v.transmission || 'Automatique'}">
+                <label>Carburant</label><input type="text" class="v-carb" value="${v.carburant || 'Essence'}">
+                <label>Description</label><textarea class="v-desc">${v.description || ''}</textarea>
+                <label>Photos (séparées par des virgules)</label><input type="text" class="v-pics" value="${(v.photos || []).join(', ')}">
+            `;
+            document.getElementById('cars-container').appendChild(div);
+        }
+
+        async function generateData() {
+            const res = await fetch('data.json');
+            let data = await res.json();
+            
+            data.voitures = Array.from(document.querySelectorAll('.item')).map(el => ({
+                nom: el.querySelector('.v-nom').value,
+                prix: el.querySelector('.v-prix').value,
+                places: parseInt(el.querySelector('.v-places').value),
+                transmission: el.querySelector('.v-trans').value,
+                carburant: el.querySelector('.v-carb').value,
+                description: el.querySelector('.v-desc').value,
+                photos: el.querySelector('.v-pics').value.split(',').map(s => s.trim()).filter(s => s !== "")
+            }));
+
+            const out = document.getElementById('json-output');
+            out.innerText = JSON.stringify(data, null, 2);
+            out.style.display = 'block';
+            window.scrollTo(0, document.body.scrollHeight);
+        }
+        init();
+    </script>
+</body>
+</html>

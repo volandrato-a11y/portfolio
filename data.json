@@ -13,12 +13,13 @@
     {
       "titre": "Rapidité",
       "icon": "fa-bolt",
-      "description": "Réservation simple et remise des clés en moins de 15 minutes. Votre temps est précieux."
+      "description": "Réservation simple et remise des clés en moins de 15 minutes."
     }
   ],
   "voitures": [
     {
       "nom": "Chevrolet Cruze",
+      "prix": "160 000 Ar/jour",
       "places": 5,
       "transmission": "Automatique",
       "carburant": "Essence",
