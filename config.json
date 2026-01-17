@@ -18,9 +18,12 @@
   },
   "footer": {
     "adresse": "Siae 33 Ambodifilao, Analakely, Antananarivo",
-    "whatsapp": "261388552432",
+    "telephone": "+261 38 85 524 32",
+    "whatsapp": "+261388552432",
+    "facebook": "https://facebook.com/votrepage",
+    "google_maps": "https://goo.gl/maps/example",
     "nif": "5012357932",
-    "stat": "1122333314"
+    "stat": "70209 11 2025 0 06328"
   },
   "playlists": {
     "youtube": "https://youtube.com/playlist?list=VOTRE_ID",
@@ -28,4 +31,5 @@
     "deezer": "https://www.deezer.com/fr/playlist/VOTRE_ID"
   }
 }
+
 
