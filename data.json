@@ -1,7 +1,7 @@
 {
   "features": [
-    { "titre": "Autonomie", "icon": "fa-key", "description": "Liberté totale de conduite." },
-    { "titre": "Sécurité", "icon": "fa-shield-alt", "description": "Véhicules révisés." }
+    { "titre": "Autonomie", "icon": "fa-key", "description": "Liberté totale de conduite sans chauffeur." },
+    { "titre": "Sécurité", "icon": "fa-shield-alt", "description": "Véhicules révisés et entretenus régulièrement." }
   ],
   "voitures": [
     {
@@ -10,12 +10,38 @@
       "places": 5,
       "transmission": "Automatique",
       "carburant": "Essence",
-      "description": "Berline luxe.",
+      "description": "Berline luxueuse et confortable, idéale pour la ville.",
       "photos": ["images/cruze1.jpg"]
+    },
+    {
+      "nom": "Dacia Duster 4x4",
+      "prix": "180 000 Ar/jour",
+      "places": 5,
+      "transmission": "Manuelle",
+      "carburant": "Diesel",
+      "description": "SUV polyvalent, parfait pour les routes de Madagascar.",
+      "photos": ["images/duster.jpg"]
+    },
+    {
+      "nom": "Hyundai Grand i10",
+      "prix": "130 000 Ar/jour",
+      "places": 5,
+      "transmission": "Manuelle",
+      "carburant": "Essence",
+      "description": "Citadine compacte et économique pour Antananarivo.",
+      "photos": ["images/i10.jpg"]
     }
   ],
+  "radios": [
+    { "nom": "RDB Madagascar", "url": "https://stream.radio.mg/rdb", "logo": "https://radio.mg/logo_rdb.png" },
+    { "nom": "RNA", "url": "https://stream.radio.mg/rna", "logo": "https://radio.mg/logo_rna.png" }
+  ],
   "conditions": [
-    { "titre": "Caution", "reponse": "0 Caution (selon conditions)", "icon": "fa-hand-holding-usd" },
-    { "titre": "Documents", "reponse": "Permis B & CIN", "icon": "fa-file-signature" }
+    { "titre": "Âge Requis", "reponse": "Le conducteur doit avoir au moins 23 ans.", "icon": "fa-user-check" },
+    { "titre": "Permis de conduire", "reponse": "Permis B valide depuis plus de 2 ans.", "icon": "fa-id-card" },
+    { "titre": "Caution", "reponse": "Un dépôt de garantie de 1 000 000 Ar est demandé.", "icon": "fa-hand-holding-usd" },
+    { "titre": "Documents", "reponse": "Original de la CIN (ou Passeport) et justificatif de domicile.", "icon": "fa-file-signature" },
+    { "titre": "Carburant", "reponse": "Véhicule livré avec le plein, à restituer avec le plein.", "icon": "fa-gas-pump" },
+    { "titre": "Zone autorisée", "reponse": "Circulation sur routes goudronnées uniquement.", "icon": "fa-map-marked-alt" }
   ]
 }
