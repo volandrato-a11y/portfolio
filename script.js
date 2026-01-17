@@ -9,17 +9,21 @@ async function initSite() {
         const resConfig = await fetch('config.json');
         siteConfig = await resConfig.json();
 
-        // 1. Thème et Fond Global
+        // 1. Thème et Fond Global (Correction forcée pour soarano.png)
         document.documentElement.style.setProperty('--primary', siteConfig.theme.primary);
         document.documentElement.style.setProperty('--accent', siteConfig.theme.accent);
         
         if (siteConfig.theme.site_bg) {
-            document.body.style.backgroundImage = `url('${siteConfig.theme.site_bg}')`;
-            document.body.style.backgroundAttachment = "fixed";
-            document.body.style.backgroundSize = "cover";
+            // Application du fond sur l'élément racine pour garantir la visibilité
+            document.documentElement.style.backgroundImage = `url('${siteConfig.theme.site_bg}')`;
+            document.documentElement.style.backgroundAttachment = "fixed";
+            document.documentElement.style.backgroundSize = "cover";
+            document.documentElement.style.backgroundPosition = "center";
+            // On rend le body transparent pour ne pas masquer le fond du html
+            document.body.style.backgroundColor = "transparent";
         }
 
-        // 2. Header (Logo + Nom)
+        // 2. Header (Logo + Nom + Suffixe)
         document.getElementById('brand-name').innerHTML = `
             <img src="${siteConfig.header.logo_url}" alt="Logo" style="height: 40px; vertical-align: middle; margin-right: 10px;">
             ${siteConfig.header.nom} <span>${siteConfig.header.suffixe}</span>
@@ -36,7 +40,7 @@ async function initSite() {
             </p>
         `;
 
-        // 4. Réseaux Sociaux (incluant Google Maps)
+        // 4. Réseaux Sociaux (incluant le bouton Google Maps)
         document.getElementById('social-links').innerHTML = `
             <a href="${siteConfig.social_links.facebook}" target="_blank"><i class="fab fa-facebook"></i></a>
             <a href="${siteConfig.social_links.tiktok}" target="_blank"><i class="fab fa-tiktok"></i></a>
@@ -44,7 +48,7 @@ async function initSite() {
             <a href="${siteConfig.social_links.maps}" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
         `;
 
-        // 5. Liens d'action directs
+        // 5. Liens d'action directs (Bouton d'appel et WhatsApp)
         const fabCall = document.getElementById('fab-call');
         if(fabCall) fabCall.href = `tel:${siteConfig.footer.telephone.replace(/\s/g, '')}`;
         
@@ -79,7 +83,7 @@ async function loadCards() {
     const res = await fetch('data_cards.json');
     const data = await res.json();
     
-    // Pourquoi nous choisir
+    // Grille "Pourquoi nous choisir" avec effet rotation
     document.getElementById('features-grid').innerHTML = data.features.map(f => `
         <div class="flip-card" onclick="this.classList.toggle('flipped')">
             <div class="flip-card-inner">
@@ -94,7 +98,7 @@ async function loadCards() {
         </div>
     `).join('');
 
-    // Conditions de location
+    // Grille "Conditions" avec effet rotation
     document.getElementById('conditions-grid').innerHTML = data.conditions.map(c => `
         <div class="flip-card" onclick="this.classList.toggle('flipped')">
             <div class="flip-card-inner">
@@ -110,7 +114,7 @@ async function loadCards() {
     `).join('');
 }
 
-// Galerie défilante des véhicules
+// Galerie des véhicules
 async function loadCars() {
     const res = await fetch('cars.json');
     const data = await res.json();
@@ -138,14 +142,12 @@ async function loadCars() {
     `).join('');
 }
 
-// Radios et Playlists
+// Musique et Divertissement
 async function loadFun() {
     const res = await fetch('fun.json');
     const data = await res.json();
     
     let contentHtml = '';
-
-    // 1. Les Radios
     contentHtml += data.radios.map(r => `
         <div class="radio-card">
             <h4>${r.nom}</h4>
@@ -156,7 +158,6 @@ async function loadFun() {
         </div>
     `).join('');
 
-    // 2. Les Playlists
     if(data.playlists) {
         contentHtml += data.playlists.map(p => `
              <div class="radio-card">
@@ -170,11 +171,10 @@ async function loadFun() {
             </div>
         `).join('');
     }
-
     document.getElementById('radios-grid').innerHTML = contentHtml;
 }
 
-// Génération dynamique du formulaire de contact
+// Formulaire de contact dynamique
 async function loadContact() {
     const res = await fetch('contact.json');
     const data = await res.json();
@@ -193,7 +193,7 @@ async function loadContact() {
     }).join('') + `<button type="submit" class="btn-submit">Envoyer sur WhatsApp <i class="fab fa-whatsapp"></i></button>`;
 }
 
-// Navigation entre les onglets
+// Fonctions utilitaires (Onglets, Menu, Prefill)
 function openTab(id) {
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
     document.getElementById(id).classList.add('active');
@@ -205,7 +205,6 @@ function toggleMenu() {
     document.getElementById('nav-menu').classList.toggle('active');
 }
 
-// Pré-remplissage du message WhatsApp
 function prefill(car) {
     openTab('contact');
     setTimeout(() => {
@@ -217,16 +216,13 @@ function prefill(car) {
     }, 300);
 }
 
-// Envoi vers WhatsApp
 function sendWhatsApp(e) {
     e.preventDefault();
     const inputs = document.querySelectorAll('#dynamic-form input, #dynamic-form select, #dynamic-form textarea');
     let msg = "Bonjour, voici ma demande :%0A%0A";
-    
     inputs.forEach(input => {
         const label = input.previousElementSibling ? input.previousElementSibling.innerText : "Champ";
         if(input.value) msg += `*${label}*: ${input.value}%0A`;
     });
-    
     window.open(`https://wa.me/${siteConfig.footer.whatsapp}?text=${msg}`, '_blank');
 }
