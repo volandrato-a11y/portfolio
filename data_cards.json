@@ -1,0 +1,12 @@
+{
+  "features": [
+    { "titre": "Autonomie", "icon": "fa-key", "description": "Liberté totale de conduite sans chauffeur." },
+    { "titre": "Sécurité", "icon": "fa-shield-alt", "description": "Véhicules révisés avant chaque départ." },
+    { "titre": "Assistance", "icon": "fa-headset", "description": "Support 24h/7 pour tous nos clients." }
+  ],
+  "conditions": [
+    { "titre": "Âge Requis", "reponse": "Le conducteur doit avoir au moins 23 ans.", "icon": "fa-user-check" },
+    { "titre": "Permis B", "reponse": "Valide depuis plus de 2 ans minimum.", "icon": "fa-id-card" },
+    { "titre": "Caution", "reponse": "Une caution est demandée au départ.", "icon": "fa-wallet" }
+  ]
+}
