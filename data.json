@@ -27,27 +27,20 @@
       "photos": ["images/cruze1.jpg", "images/cruze2.jpg"]
     }
   ],
-  "radios": [
-    {
-      "nom": "RDB 103.2",
-      "url": "https://stream.radio.co/s6f3c1b1f1/listen",
-      "logo": "images/logo_rdb.png"
-    }
-  ],
   "conditions": [
     {
       "titre": "Caution",
-      "reponse": "0 Caution (selon conditions)",
+      "reponse": "0 Caution (sous conditions spécifiques)",
       "icon": "fa-hand-holding-usd"
     },
     {
       "titre": "Documents",
-      "reponse": "Permis B & CIN requis",
+      "reponse": "Permis de conduire B original et CIN/Passeport valides.",
       "icon": "fa-file-signature"
     },
     {
-      "titre": "Carburant",
-      "reponse": "À rendre au même niveau",
+      "titre": "Restitution",
+      "reponse": "Le véhicule doit être rendu avec le même niveau de carburant qu'au départ.",
       "icon": "fa-gas-pump"
     }
   ]
