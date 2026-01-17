@@ -16,14 +16,21 @@ async function loadConfig() {
     siteConfig = await res.json();
     document.getElementById('brand-name').innerHTML = `${siteConfig.header.nom} <span>${siteConfig.header.suffixe}</span>`;
     
-    // Restauration du footer complet
+    // Liens dynamiques Hero
+    if(document.getElementById('hero-call')) document.getElementById('hero-call').href = `tel:${siteConfig.header.telephone}`;
+    if(document.getElementById('hero-wa')) document.getElementById('hero-wa').href = `https://wa.me/${siteConfig.footer.whatsapp.replace(/\s/g, '')}`;
+
+    // Restauration du footer
     document.getElementById('main-footer').innerHTML = `
-        <p>${siteConfig.footer.adresse}</p>
-        <p>📞 ${siteConfig.footer.telephone} | WhatsApp: ${siteConfig.footer.whatsapp}</p>
-        <p style="font-size:0.8rem; margin-top:10px; opacity:0.6;">NIF: ${siteConfig.footer.nif} | STAT: ${siteConfig.footer.stat}</p>
+        <div class="container">
+            <p>${siteConfig.footer.adresse}</p>
+            <p>📞 ${siteConfig.footer.telephone} | WhatsApp: ${siteConfig.footer.whatsapp}</p>
+            <p style="font-size:0.7rem; margin-top:10px; opacity:0.5;">NIF: ${siteConfig.footer.nif} | STAT: ${siteConfig.footer.stat}</p>
+        </div>
     `;
 }
 
+// Fonction de redirection à partir du bouton Réserver
 function prefillReservation(carName) {
     document.getElementById('subject').value = "Reservation";
     document.getElementById('message').value = `Je souhaite réserver le véhicule : ${carName}`;
@@ -36,7 +43,7 @@ async function loadData() {
 
     // 1. Pourquoi nous
     const featGrid = document.getElementById('features-grid');
-    featGrid.innerHTML = ""; 
+    featGrid.innerHTML = "";
     data.features.forEach(f => {
         const card = document.createElement('div');
         card.className = 'flip-card';
@@ -64,13 +71,13 @@ async function loadData() {
                     </div>
                     <p class="car-desc">${car.description}</p>
                     <div class="car-btns">
-                        <button class="nav-special" style="border:none; cursor:pointer; padding:10px" onclick="prefillReservation('${car.nom}')">Réserver</button>
+                        <button class="nav-special" style="border:none; cursor:pointer; padding:10px;" onclick="prefillReservation('${car.nom}')">Réserver</button>
                     </div>
                 </div>
             </div>`;
     });
 
-    // 3. Conditions (Correction du chargement)
+    // 3. Conditions (Chargement corrigé)
     const condGrid = document.getElementById('conditions-list');
     condGrid.innerHTML = "";
     data.conditions.forEach(c => {
@@ -86,7 +93,7 @@ async function loadData() {
 }
 
 function sendWhatsApp() {
-    const text = `*NOUVEAU MESSAGE*%0A` +
+    const text = `*MESSAGE DU SITE*%0A` +
                  `*Client:* ${document.getElementById('lname').value} ${document.getElementById('fname').value}%0A` +
                  `*Email:* ${document.getElementById('email').value}%0A` +
                  `*Motif:* ${document.getElementById('subject').value}%0A` +
