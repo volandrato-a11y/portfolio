@@ -29,7 +29,7 @@
       "transmission": "Manuelle",
       "carburant": "Essence",
       "description": "Berline de luxe, idéale pour vos déplacements en ville et événements.",
-      "photos": ["images/cruze1.jpg", "images/cruze2.jpg"]"photos": ["images/i10.jpg"]
+      "photos": ["images/cruze1.jpg", "images/cruze2.jpg"]
     },
         {
       "nom": "Hyundai Getz",
@@ -54,5 +54,6 @@
     { "titre": "Zone", "reponse": "Autorisé sur toutes les routes goudronnées de Mada.", "icon": "fa-map-marked-alt" }
   ]
 }
+
 
 
