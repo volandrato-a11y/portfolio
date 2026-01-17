@@ -12,7 +12,7 @@
 
 <header class="header">
     <div class="nav-container">
-        <h1 id="brand-name">Chargement...</h1>
+        <h1 id="brand-name">RIJA NIAINA <span>SERVICES</span></h1>
         <div class="menu-burger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
         <nav id="nav-menu">
             <button onclick="openTab('home')">Accueil</button>
@@ -28,15 +28,18 @@
     <section id="home" class="tab active">
         <div id="hero-banner" class="hero">
             <div class="hero-content">
-                <h2 id="hero-title"></h2>
-                <p id="hero-slogan" class="slogan"></p>
-                <p id="hero-desc" class="description"></p>
+                <h2 id="hero-title">Chargement...</h2>
+                <p id="hero-slogan" class="slogan-top"></p>
+                
                 <div class="hero-btns">
                     <button class="btn-primary" onclick="openTab('cars')"><i class="fas fa-car"></i> Voir les voitures</button>
-                    <a id="hero-whatsapp" href="#" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    <a id="hero-whatsapp" href="#" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                 </div>
+
+                <p id="hero-desc" class="description-bottom"></p>
             </div>
         </div>
+        
         <div class="container">
             <h2 class="section-title">Pourquoi nous choisir ?</h2>
             <div id="features-grid" class="features-grid"></div>
@@ -59,7 +62,7 @@
 
     <section id="fun" class="tab">
         <div class="container">
-            <h2 id="fun-title" class="section-title"></h2>
+            <h2 class="section-title">Divertissement</h2>
             <div id="radios-grid" class="radios-grid"></div>
         </div>
     </section>
@@ -67,16 +70,16 @@
     <section id="contact" class="tab">
         <div class="container">
             <div class="contact-wrapper">
-                <h2 id="contact-title"></h2>
+                <h2 id="contact-title" style="text-align:center; color:var(--primary); margin-bottom:20px;">Contactez-nous</h2>
                 <form id="dynamic-form" onsubmit="sendWhatsApp(event)"></form>
             </div>
         </div>
     </section>
 </main>
 
-<footer>
+<footer class="footer-fixed">
     <div class="container">
-        <div id="footer-info"></div>
+        <div id="footer-info" class="footer-text"></div>
         <div id="social-links" class="social-footer"></div>
     </div>
 </footer>

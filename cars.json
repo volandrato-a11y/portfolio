@@ -1,44 +1,39 @@
 {
-  "style": {
-    "card_border_color": "#eeeeee",
-    "text_price_color": "#0d47a1",
-    "text_name_color": "#1a1a1a"
-  },
   "liste": [
     {
       "nom": "Chevrolet Cruze",
-      "prix": "160 000 Ar/jour",
+      "prix": "160 000 Ar / jour",
       "places": 5,
       "transmission": "Automatique",
       "carburant": "Essence",
-      "description": "Berline de luxe, idéale pour vos déplacements en ville et événements.",
-      "photos": ["images/cruze1.jpg", "images/cruze2.jpg"]
+      "description": "Berline de luxe, élégante et puissante pour vos trajets urbains.",
+      "photos": ["images/cruze1.jpg"]
     },
     {
-      "nom": "Dacia Duster 4x4",
-      "prix": "180 000 Ar/jour",
-      "places": 5,
-      "transmission": "Manuelle",
+      "nom": "Chevrolet Captiva",
+      "prix": "160 000 Ar / jour",
+      "places": 7,
+      "transmission": "Automatique",
       "carburant": "Diesel",
-      "description": "Robuste et confortable, parfait pour les routes nationales.",
-      "photos": ["images/duster1.jpg"]
+      "description": "SUV spacieux et robuste, idéal pour les familles et longs trajets.",
+      "photos": ["images/captiva.jpg"]
     },
     {
-      "nom": "Hyundai Grand i10",
-      "prix": "130 000 Ar/jour",
+      "nom": "Kia Pride Rio",
+      "prix": "120 000 Ar / jour",
       "places": 5,
-      "transmission": "Manuelle",
+      "transmission": "Automatique",
       "carburant": "Essence",
-      "description": "Compacte et économique, facile à garer en centre-ville.",
-      "photos": ["images/i10_1.jpg", "images/i10_2.jpg"]
+      "description": "Citadine moderne, confortable et très facile à conduire.",
+      "photos": ["images/rio.jpg"]
     },
     {
       "nom": "Hyundai Getz",
-      "prix": "100 000 Ar/jour",
+      "prix": "80 000 Ar / jour",
       "places": 5,
-      "transmission": "Manuelle",
+      "transmission": "Manuel",
       "carburant": "Essence",
-      "description": "Simple et efficace pour vos petits trajets quotidiens.",
+      "description": "Économique et compacte, parfaite pour circuler partout en ville.",
       "photos": ["images/getz.jpg"]
     }
   ]

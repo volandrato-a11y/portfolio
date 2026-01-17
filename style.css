@@ -5,6 +5,7 @@
     --light: #f4f7f9;
 }
 
+* { margin: 0; padding: 0; box-sizing: border-box; }
 body { 
     font-family: 'Poppins', sans-serif; 
     background-color: var(--light);
@@ -12,48 +13,50 @@ body {
     background-size: cover;
     background-position: center;
     color: var(--dark);
+    overflow-x: hidden;
 }
 
-.container { width: 90%; max-width: 1200px; margin: 40px auto; }
-.section-title { text-align: center; margin-bottom: 40px; font-size: 2rem; color: var(--primary); }
+/* HEADER & NAVIGATION */
+.header { position: fixed; top: 0; width: 100%; height: 75px; background: rgba(255,255,255,0.98); z-index: 3000; display: flex; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+.nav-container { width: 90%; max-width: 1200px; margin: auto; display: flex; justify-content: space-between; align-items: center; }
+#nav-menu button { background: none; border: none; padding: 10px 15px; font-weight: 600; cursor: pointer; color: var(--dark); }
 
-/* BOUTONS ACCUEIL */
-.hero-btns { display: flex; gap: 15px; justify-content: center; margin-top: 30px; }
-.btn-primary, .btn-whatsapp { padding: 15px 30px; border-radius: 50px; font-weight: bold; text-decoration: none; border: none; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 10px; }
+/* HERO SECTION (ACCUEIL) */
+.hero { height: 90vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white; background-size: cover; background-position: center; position: relative; margin-bottom: 50px; }
+.hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.6); }
+.hero-content { position: relative; z-index: 1; max-width: 800px; padding: 20px; }
+#hero-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 10px; color: #fff; }
+#hero-slogan { font-size: 1.2rem; margin-bottom: 25px; color: #eee; font-style: italic; }
+#hero-desc { font-size: 1rem; margin-top: 25px; line-height: 1.6; color: #ddd; }
+.hero-btns { display: flex; gap: 15px; justify-content: center; }
+
+/* BOUTONS */
+.btn-primary, .btn-whatsapp { padding: 12px 25px; border-radius: 50px; font-weight: bold; text-decoration: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 10px; transition: 0.3s; }
 .btn-primary { background: var(--primary); color: white; }
 .btn-whatsapp { background: var(--accent); color: white; }
-.btn-primary:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(13,71,161,0.3); }
 
-/* CARTES TOURNANTES (FLIP CARDS) */
-.conditions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; perspective: 1000px; }
-.flip-card { height: 200px; cursor: pointer; position: relative; transform-style: preserve-3d; transition: transform 0.6s; }
+/* CARTES TOURNANTES (CONDITIONS) */
+.conditions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 280px)); gap: 20px; justify-content: center; perspective: 1000px; padding: 20px; }
+.flip-card { height: 220px; cursor: pointer; position: relative; transform-style: preserve-3d; transition: transform 0.6s; width: 100%; }
 .flip-card.flipped { transform: rotateY(180deg); }
-.flip-front, .flip-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; text-align: center; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-.flip-front { background: white; color: var(--primary); border: 1px solid var(--primary); }
+.flip-front, .flip-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; box-shadow: 0 8px 15px rgba(0,0,0,0.1); border: 1px solid rgba(0,0,0,0.05); }
+.flip-front { background: white; color: var(--primary); }
 .flip-back { background: var(--primary); color: white; transform: rotateY(180deg); }
-.flip-front i { font-size: 3rem; margin-bottom: 15px; }
+.flip-front i { font-size: 2.5rem; margin-bottom: 10px; }
 
-/* FEATURES (POURQUOI NOUS CHOISIR) */
-.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-.feature-card { background: white; padding: 30px; border-radius: 20px; text-align: center; border-bottom: 4px solid var(--primary); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-.feature-card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 15px; }
+/* VEHICULES */
+.cars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+.car-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); color: var(--dark); }
+.car-info { padding: 20px; }
+.car-info h3 { color: var(--primary); margin-bottom: 5px; }
 
-/* BOUTON FLOTTANT */
-.fab-call { position: fixed; bottom: 30px; right: 30px; background: var(--primary); color: white; padding: 15px 25px; border-radius: 50px; display: flex; align-items: center; gap: 10px; text-decoration: none; z-index: 4000; box-shadow: 0 10px 20px rgba(0,0,0,0.2); transition: 0.3s; }
-.fab-call:hover { transform: translateY(-5px); background: #0a3880; }
+/* FOOTER FIGÉ */
+footer { background: white; padding: 30px 0; text-align: center; border-top: 2px solid var(--primary); width: 100%; position: relative; margin-top: 50px; }
+.social-footer { display: flex; justify-content: center; gap: 20px; margin-top: 15px; }
+.social-footer a { color: var(--primary); font-size: 1.5rem; transition: 0.3s; }
 
-/* RESEAUX SOCIAUX FOOTER */
-.social-footer { margin-top: 20px; display: flex; justify-content: center; gap: 20px; font-size: 1.5rem; }
-.social-footer a { color: var(--primary); transition: 0.3s; }
-.social-footer a:hover { color: var(--accent); }
+/* FAB CALL */
+.fab-call { position: fixed; bottom: 20px; right: 20px; background: var(--primary); color: white; padding: 12px 20px; border-radius: 50px; display: flex; align-items: center; gap: 10px; text-decoration: none; z-index: 4000; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
 
-/* ONGLET ACTIF */
-.tab { display: none; }
-.tab.active { display: block; animation: fadeIn 0.5s; }
-@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-
-/* HEADER */
-.header { position: fixed; top:0; width:100%; height:75px; background:white; z-index:3000; display:flex; align-items:center; box-shadow:0 2px 10px rgba(0,0,0,0.1); }
-.nav-container { width:90%; margin:auto; display:flex; justify-content:space-between; align-items:center; }
-#nav-menu button { background:none; border:none; padding:10px 15px; font-weight:600; cursor:pointer; }
-.nav-special { background:var(--primary) !important; color:white !important; border-radius:10px; }
+.tab { display: none; padding-top: 100px; min-height: 80vh; }
+.tab.active { display: block; }
