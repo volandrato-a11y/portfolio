@@ -1,4 +1,21 @@
 {
+  "features": [
+    {
+      "titre": "Autonomie",
+      "icon": "fa-key",
+      "description": "Prenez le contrôle total de vos déplacements. Pas de chauffeur, vous êtes libre d'aller où vous voulez, quand vous voulez."
+    },
+    {
+      "titre": "Sécurité",
+      "icon": "fa-shield-alt",
+      "description": "Tous nos véhicules sont rigoureusement révisés. Nous garantissons une mécanique fiable pour votre tranquillité."
+    },
+    {
+      "titre": "Rapidité",
+      "icon": "fa-bolt",
+      "description": "Réservation simple et remise des clés en moins de 15 minutes. Nous valorisons votre temps."
+    }
+  ],
   "voitures": [
     {
       "nom": "Chevrolet Cruze",
@@ -19,11 +36,7 @@
   "conditions": [
     {
       "titre": "Documents requis",
-      "details": ["Permis de conduire valide (+2 ans)", "Copie CIN ou Passeport", "Justificatif de domicile récent"]
-    },
-    {
-      "titre": "Caution & Garantie",
-      "details": ["Dépôt de caution obligatoire au départ", "Restitution immédiate après état des lieux"]
+      "details": ["Permis de conduire (+2 ans)", "Copie CIN ou Passeport", "Justificatif de domicile"]
     }
   ]
 }
