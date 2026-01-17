@@ -19,7 +19,8 @@
   "footer": {
     "adresse": "Siae 33 Ambodifilao, Analakely, Antananarivo",
     "whatsapp": "261388552432",
-    "nif": "5012357932"
+    "nif": "5012357932",
+    "stat": "1122333314"
   },
   "playlists": {
     "youtube": "https://youtube.com/playlist?list=VOTRE_ID",
@@ -27,3 +28,4 @@
     "deezer": "https://www.deezer.com/fr/playlist/VOTRE_ID"
   }
 }
+
