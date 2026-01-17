@@ -22,10 +22,13 @@ async function initSite() {
             <p style="font-size:0.8rem; margin-top:5px; color:#777;">NIF: ${siteConfig.footer.nif} | STAT: ${siteConfig.footer.stat}</p>
         `;
 
+// Cherchez ce bloc dans la fonction initSite et remplacez-le :
+
         document.getElementById('social-links').innerHTML = `
-            <a href="${siteConfig.social_links.facebook}"><i class="fab fa-facebook"></i></a>
-            <a href="${siteConfig.social_links.tiktok}"><i class="fab fa-tiktok"></i></a>
-            <a href="${siteConfig.social_links.instagram}"><i class="fab fa-instagram"></i></a>
+            <a href="${siteConfig.social_links.facebook}" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="${siteConfig.social_links.tiktok}" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="${siteConfig.social_links.instagram}" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="${siteConfig.social_links.maps}" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
         `;
 
         // Liens
@@ -52,19 +55,27 @@ async function loadHome() {
 }
 
 // Correction des Cartes Tournantes
+// Remplacez toute la fonction loadCards par ceci :
 async function loadCards() {
     const res = await fetch('data_cards.json');
     const data = await res.json();
     
+    // MODIFICATION ICI : On utilise la structure flip-card pour "Pourquoi nous choisir"
     document.getElementById('features-grid').innerHTML = data.features.map(f => `
-        <div class="feature-card">
-            <i class="fas ${f.icon}"></i>
-            <h3>${f.titre}</h3>
-            <p>${f.description}</p>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+                <div class="flip-front">
+                    <i class="fas ${f.icon}"></i>
+                    <h3>${f.titre}</h3>
+                </div>
+                <div class="flip-back">
+                    <p>${f.description}</p>
+                </div>
+            </div>
         </div>
     `).join('');
 
-    // Structure spécifique pour le retournement en CSS
+    // Les conditions restent aussi en mode "flip"
     document.getElementById('conditions-grid').innerHTML = data.conditions.map(c => `
         <div class="flip-card" onclick="this.classList.toggle('flipped')">
             <div class="flip-card-inner">
