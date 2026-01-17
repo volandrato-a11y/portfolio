@@ -2,7 +2,7 @@
   "theme": {
     "site_bg": "images/soarano.png",
     "primary": "#0d47a1",
-    "accent": "#25d366",
+    "accent": "#1d2e23",
     "text_main": "#1a1a1a",
     "border_color": "#dddddd",
     "card_bg": "rgba(255, 255, 255, 0.9)"
@@ -25,4 +25,5 @@
     "nif": "5012357932",
     "stat": "70209 11 2025 0 06328"
   }
+
 }
