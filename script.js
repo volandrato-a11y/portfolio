@@ -15,12 +15,16 @@ async function initSite() {
         
         // Header
         document.getElementById('brand-name').innerHTML = `${siteConfig.header.nom} <span>${siteConfig.header.suffixe}</span>`;
-
-        // Footer
-        document.getElementById('footer-info').innerHTML = `
-            <p><b>${siteConfig.header.nom}</b><br>${siteConfig.footer.adresse}</p>
-            <p style="font-size:0.8rem; margin-top:5px; color:#777;">NIF: ${siteConfig.footer.nif} | STAT: ${siteConfig.footer.stat}</p>
-        `;
+// Dans la fonction async function initSite() ...
+document.getElementById('footer-info').innerHTML = `
+    <p><b>${siteConfig.header.nom}</b><br>${siteConfig.footer.adresse}</p>
+    <p style="margin-top:5px;">
+        <i class="fas fa-phone"></i> ${siteConfig.footer.telephone}
+    </p>
+    <p style="font-size:0.8rem; margin-top:5px; color:#777;">
+        NIF: ${siteConfig.footer.nif} | STAT: ${siteConfig.footer.stat}
+    </p>
+`;
 
 // Cherchez ce bloc dans la fonction initSite et remplacez-le :
 
@@ -204,4 +208,5 @@ function sendWhatsApp(e) {
     });
     
     window.open(`https://wa.me/${siteConfig.footer.whatsapp}?text=${msg}`, '_blank');
+
 }
