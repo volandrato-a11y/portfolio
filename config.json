@@ -2,13 +2,18 @@
   "header": {
     "nom": "Rija NIAINA",
     "suffixe": "CAR SERVICES",
-    "logo": "images/logo.png",
     "telephone": "+261 38 85 524 32"
   },
   "theme": {
     "primary": "#0d47a1",
     "accent": "#25d366",
     "hero_bg": "images/chevrolet_cruze.jpg"
+  },
+  "social": {
+    "facebook": "https://facebook.com/votrepage",
+    "tiktok": "https://tiktok.com/@votrecompte",
+    "instagram": "https://instagram.com/votrecompte",
+    "maps": "https://goo.gl/maps/votrelien"
   },
   "footer": {
     "adresse": "Siae 33 Ambodifilao, Analakely, Antananarivo",
