@@ -43,22 +43,72 @@
         </div>
     </section>
 
-    <section id="cars" class="tab"><div class="container"><h2>Nos Véhicules</h2><div id="cars-grid" class="grid"></div></div></section>
-    <section id="radio" class="tab"><div class="container"><h2>WebRadio</h2><div id="radio-grid" class="grid"></div></div></section>
-    <section id="terms" class="tab"><div class="container"><h2>Conditions</h2><div id="conditions-list"></div></div></section>
+    <section id="cars" class="tab">
+        <div class="container">
+            <h2>Nos Véhicules</h2>
+            <div id="cars-grid" class="grid"></div>
+        </div>
+    </section>
+
+    <section id="radio" class="tab">
+        <div class="container">
+            <h2>WebRadio</h2>
+            <div id="radio-grid" class="grid"></div>
+        </div>
+    </section>
+
+    <section id="terms" class="tab">
+        <div class="container">
+            <h2>Conditions de Location</h2>
+            <div id="conditions-list"></div>
+        </div>
+    </section>
     
     <section id="contact" class="tab">
         <div class="container">
-            <h2>Contact</h2>
-            <form onsubmit="sendWhatsApp(); return false;" class="modern-form">
-                <input type="text" id="name" placeholder="Votre Nom" required>
-                <select id="subject">
-                    <option value="Réservation">Réservez une voiture</option>
-                    <option value="Partenariat">Demande de partenariat</option>
-                </select>
-                <textarea id="message" placeholder="Votre message..." required></textarea>
-                <button type="submit" class="btn-submit">Envoyer via WhatsApp</button>
-            </form>
+            <div class="contact-wrapper">
+                <h2>Contactez-nous</h2>
+                <p style="text-align:center; margin-bottom:30px;">Remplissez ce formulaire pour une réservation rapide.</p>
+                
+                <form onsubmit="sendWhatsApp(); return false;" class="modern-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Nom</label>
+                            <input type="text" id="lname" placeholder="Ex: RAKOTO" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Prénom</label>
+                            <input type="text" id="fname" placeholder="Ex: Jean" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="email" placeholder="votre@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Adresse de résidence</label>
+                        <input type="text" id="address" placeholder="Lot IVG... Antananarivo" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Objet de la demande</label>
+                        <select id="subject">
+                            <option value="Réservation">Réserver un véhicule</option>
+                            <option value="Informations">Demande d'informations</option>
+                            <option value="Partenariat">Partenariat professionnel</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Votre Message</label>
+                        <textarea id="message" rows="4" placeholder="Précisez les dates et le modèle souhaité..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Envoyer via WhatsApp <i class="fab fa-whatsapp"></i></button>
+                </form>
+            </div>
         </div>
     </section>
 </main>
