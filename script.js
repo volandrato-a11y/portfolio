@@ -15,21 +15,34 @@ async function loadConfig() {
     const res = await fetch('config.json');
     siteConfig = await res.json();
     document.getElementById('brand-name').innerHTML = `${siteConfig.header.nom} <span>${siteConfig.header.suffixe}</span>`;
-    document.getElementById('main-footer').innerHTML = `<p>${siteConfig.footer.adresse}</p><p>📞 ${siteConfig.footer.telephone}</p>`;
+    
+    // Restauration du footer complet
+    document.getElementById('main-footer').innerHTML = `
+        <p>${siteConfig.footer.adresse}</p>
+        <p>📞 ${siteConfig.footer.telephone} | WhatsApp: ${siteConfig.footer.whatsapp}</p>
+        <p style="font-size:0.8rem; margin-top:10px; opacity:0.6;">NIF: ${siteConfig.footer.nif} | STAT: ${siteConfig.footer.stat}</p>
+    `;
+}
+
+function prefillReservation(carName) {
+    document.getElementById('subject').value = "Reservation";
+    document.getElementById('message').value = `Je souhaite réserver le véhicule : ${carName}`;
+    openTab('contact');
 }
 
 async function loadData() {
     const res = await fetch('data.json');
     const data = await res.json();
 
-    // 1. Pourquoi nous (Flip Cards)
+    // 1. Pourquoi nous
     const featGrid = document.getElementById('features-grid');
+    featGrid.innerHTML = ""; 
     data.features.forEach(f => {
         const card = document.createElement('div');
         card.className = 'flip-card';
         card.onclick = () => card.classList.toggle('flipped');
         card.innerHTML = `
-            <div class="flip-front"><i class="fas ${f.icon}"></i><h4>${f.titre}</h4><p style="font-size:0.7rem;color:#999">Cliquez pour voir</p></div>
+            <div class="flip-front"><i class="fas ${f.icon}"></i><h4>${f.titre}</h4></div>
             <div class="flip-back"><p>${f.description}</p></div>
         `;
         featGrid.appendChild(card);
@@ -37,6 +50,7 @@ async function loadData() {
 
     // 2. Voitures
     const carGrid = document.getElementById('cars-grid');
+    carGrid.innerHTML = "";
     data.voitures.forEach(car => {
         carGrid.innerHTML += `
             <div class="car-card">
@@ -50,14 +64,15 @@ async function loadData() {
                     </div>
                     <p class="car-desc">${car.description}</p>
                     <div class="car-btns">
-                        <button class="nav-special" style="border:none; cursor:pointer" onclick="openTab('contact')">Réserver</button>
+                        <button class="nav-special" style="border:none; cursor:pointer; padding:10px" onclick="prefillReservation('${car.nom}')">Réserver</button>
                     </div>
                 </div>
             </div>`;
     });
 
-    // 3. Conditions (Flip Cards aussi !)
+    // 3. Conditions (Correction du chargement)
     const condGrid = document.getElementById('conditions-list');
+    condGrid.innerHTML = "";
     data.conditions.forEach(c => {
         const card = document.createElement('div');
         card.className = 'flip-card';
@@ -71,6 +86,10 @@ async function loadData() {
 }
 
 function sendWhatsApp() {
-    const text = `*RESERVATION*%0AClient: ${document.getElementById('lname').value} ${document.getElementById('fname').value}`;
+    const text = `*NOUVEAU MESSAGE*%0A` +
+                 `*Client:* ${document.getElementById('lname').value} ${document.getElementById('fname').value}%0A` +
+                 `*Email:* ${document.getElementById('email').value}%0A` +
+                 `*Motif:* ${document.getElementById('subject').value}%0A` +
+                 `*Message:* ${document.getElementById('message').value}`;
     window.open(`https://wa.me/${siteConfig.footer.whatsapp.replace(/\s/g, '')}?text=${text}`, '_blank');
 }
