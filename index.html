@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Location Voiture Antananarivo | Rija Niaina Car Services</title>
-    <meta name="description" content="Location de voiture premium sans chauffeur à Antananarivo. SUV, Berlines et 4x4 au meilleur prix à Madagascar. Réservation rapide via WhatsApp.">
+    <meta name="description" content="Location de véhicule sans chauffeur à Antananarivo Madagascar.">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -30,7 +30,7 @@
         <div class="hero">
             <div class="hero-overlay">
                 <h2>Liberté de conduire à Antananarivo</h2>
-                <p>Location premium sans chauffeur. Explorez Madagascar en toute autonomie.</p>
+                <p>Location premium sans chauffeur à Madagascar.</p>
                 <div class="hero-btns">
                     <a id="hero-call" href="#" class="btn-call">📞 Appeler</a>
                     <a id="hero-wa" href="#" class="btn-wa">💬 WhatsApp</a>
@@ -41,13 +41,13 @@
             <div class="social-quick-links">
                 <a id="link-fb" href="#" target="_blank"><i class="fab fa-facebook"></i></a>
                 <a id="link-tk" href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a id="link-ig" href="#" target="_blank"><i class="fab fa-instagram"></i></a>
                 <a id="link-map" href="#" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
             </div>
 
             <div class="seo-content">
-                <h2 class="section-title">Votre partenaire de confiance à Madagascar</h2>
-                <p>Bienvenue chez <strong>Rija Niaina Car Services</strong>, expert en <strong>location de véhicule sans chauffeur à Antananarivo</strong>. Nous offrons une large gamme de véhicules adaptés à tous vos besoins : déplacements urbains, voyages d'affaires ou escapades touristiques.</p>
-                <p>Nos véhicules sont rigoureusement entretenus pour vous garantir sécurité et confort sur les routes malgaches. Profitez de tarifs compétitifs et d'un service client réactif disponible 7j/7.</p>
+                <h2 class="section-title">Votre partenaire de confiance à Antananarivo</h2>
+                <p>Bienvenue chez <strong>Rija Niaina Car Services</strong>, le spécialiste de la <strong>location de voiture à Madagascar</strong>. Nous proposons des solutions flexibles pour vos besoins de transport dans la capitale.</p>
             </div>
 
             <h2 class="section-title">Pourquoi nous choisir ?</h2>
@@ -56,22 +56,28 @@
     </section>
 
     <section id="cars" class="tab">
-        <div class="container"><h2 class="section-title">Notre Flotte</h2><div id="cars-grid" class="grid"></div></div>
+        <div class="container">
+            <h2 class="section-title">Notre Flotte</h2>
+            <div id="cars-grid" class="grid"></div>
+        </div>
     </section>
 
     <section id="fun" class="tab">
         <div class="container">
-            <h2 class="section-title">Divertissement</h2>
+            <h2 class="section-title">Web Radios & Playlists</h2>
             <div id="radios-grid" class="grid-small"></div>
             <div class="playlist-btns" style="margin-top:30px;">
-                <a id="play-yt" class="play-btn yt"><i class="fab fa-youtube"></i> YouTube</a>
-                <a id="play-sp" class="play-btn sp"><i class="fab fa-spotify"></i> Spotify</a>
+                <a id="play-yt" target="_blank" class="play-btn yt"><i class="fab fa-youtube"></i> YouTube</a>
+                <a id="play-sp" target="_blank" class="play-btn sp"><i class="fab fa-spotify"></i> Spotify</a>
             </div>
         </div>
     </section>
 
     <section id="terms" class="tab">
-        <div class="container"><h2 class="section-title">Conditions</h2><div id="conditions-list" class="flip-grid"></div></div>
+        <div class="container">
+            <h2 class="section-title">Conditions de Location</h2>
+            <div id="conditions-list" class="flip-grid"></div>
+        </div>
     </section>
 
     <section id="contact" class="tab">
@@ -80,10 +86,8 @@
                 <h2 class="section-title">Réservation</h2>
                 <form onsubmit="sendWhatsApp(); return false;">
                     <input type="text" id="lname" placeholder="Nom" required>
-                    <input type="text" id="fname" placeholder="Prénom" required>
-                    <select id="subject"><option value="Reservation">Réservation</option></select>
-                    <textarea id="message" rows="4" placeholder="Votre message..." required></textarea>
-                    <button type="submit" class="btn-submit">Envoyer sur WhatsApp</button>
+                    <textarea id="message" rows="4" placeholder="Quel véhicule et quelles dates ?" required></textarea>
+                    <button type="submit" class="btn-submit">Réserver sur WhatsApp</button>
                 </form>
             </div>
         </div>
@@ -92,7 +96,10 @@
 
 <footer id="main-footer"></footer>
 
-<a href="tel:+261388552432" class="fab-call"><i class="fas fa-phone-alt"></i><span>Appelez-nous</span></a>
+<a id="fab-call-btn" href="tel:+261388552432" class="fab-call">
+    <i class="fas fa-phone-alt"></i>
+    <span>Appelez-nous</span>
+</a>
 
 <script src="script.js"></script>
 </body>
