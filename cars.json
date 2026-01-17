@@ -1,0 +1,45 @@
+{
+  "style": {
+    "card_border_color": "#eeeeee",
+    "text_price_color": "#0d47a1",
+    "text_name_color": "#1a1a1a"
+  },
+  "liste": [
+    {
+      "nom": "Chevrolet Cruze",
+      "prix": "160 000 Ar/jour",
+      "places": 5,
+      "transmission": "Automatique",
+      "carburant": "Essence",
+      "description": "Berline de luxe, idéale pour vos déplacements en ville et événements.",
+      "photos": ["images/cruze1.jpg", "images/cruze2.jpg"]
+    },
+    {
+      "nom": "Dacia Duster 4x4",
+      "prix": "180 000 Ar/jour",
+      "places": 5,
+      "transmission": "Manuelle",
+      "carburant": "Diesel",
+      "description": "Robuste et confortable, parfait pour les routes nationales.",
+      "photos": ["images/duster1.jpg"]
+    },
+    {
+      "nom": "Hyundai Grand i10",
+      "prix": "130 000 Ar/jour",
+      "places": 5,
+      "transmission": "Manuelle",
+      "carburant": "Essence",
+      "description": "Compacte et économique, facile à garer en centre-ville.",
+      "photos": ["images/i10_1.jpg", "images/i10_2.jpg"]
+    },
+    {
+      "nom": "Hyundai Getz",
+      "prix": "100 000 Ar/jour",
+      "places": 5,
+      "transmission": "Manuelle",
+      "carburant": "Essence",
+      "description": "Simple et efficace pour vos petits trajets quotidiens.",
+      "photos": ["images/getz.jpg"]
+    }
+  ]
+}

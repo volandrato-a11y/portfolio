@@ -1,106 +1,122 @@
-let siteConfig = {};
+let config = {};
 
 document.addEventListener('DOMContentLoaded', async () => {
-    await loadConfig();
-    await loadData();
+    await initSite();
 });
 
-function toggleMenu() {
-    document.getElementById('nav-menu').classList.toggle('active');
+async function initSite() {
+    // 1. Charger la configuration globale
+    const resConfig = await fetch('config.json');
+    config = await resConfig.json();
+
+    // Appliquer le thème
+    const root = document.documentElement;
+    root.style.setProperty('--primary', config.theme.primary);
+    root.style.setProperty('--accent', config.theme.accent);
+    root.style.setProperty('--text-color', config.theme.text_main);
+    root.style.setProperty('--border-color', config.theme.border_color);
+
+    // Image de fond globale (Fallback si vide)
+    if (config.theme.site_bg) {
+        document.body.style.backgroundImage = `url('${config.theme.site_bg}')`;
+    }
+
+    // Header & Footer
+    document.getElementById('brand-name').innerHTML = `${config.header.nom} <span>${config.header.suffixe}</span>`;
+    document.getElementById('main-footer').innerHTML = `
+        <p><b>${config.header.nom}</b> - ${config.footer.adresse}</p>
+        <p>NIF: ${config.footer.nif} | Tel: ${config.footer.telephone}</p>
+    `;
+    document.getElementById('fab-call').href = `tel:${config.footer.telephone.replace(/\s/g, '')}`;
+
+    // Charger les contenus des pages
+    loadHomePage();
+    loadCarsPage();
+    loadFunPage();
+    loadContactPage();
+}
+
+async function loadHomePage() {
+    const res = await fetch('home.json');
+    const data = await res.json();
+    document.getElementById('hero-banner').style.backgroundImage = `url('${data.hero.image}')`;
+    document.getElementById('hero-title').innerText = data.hero.titre;
+    document.getElementById('hero-slogan').innerText = data.hero.slogan;
+    document.getElementById('hero-desc').innerText = data.hero.description;
+}
+
+async function loadCarsPage() {
+    const res = await fetch('cars.json');
+    const data = await res.json();
+    const grid = document.getElementById('cars-grid');
+    grid.innerHTML = data.liste.map(car => `
+        <div class="car-card">
+            <img src="${car.photos[0]}" class="car-img">
+            <div class="car-info">
+                <h3>${car.nom}</h3>
+                <p style="color:var(--primary); font-weight:bold;">${car.prix}</p>
+                <div class="car-specs">
+                    <span class="spec-item">${car.places} places</span>
+                    <span class="spec-item">${car.transmission}</span>
+                    <span class="spec-item">${car.carburant}</span>
+                </div>
+                <p style="font-size:0.9rem; margin-bottom:15px;">${car.description}</p>
+                <button class="btn-submit" onclick="prefill('${car.nom}')">Réserver</button>
+            </div>
+        </div>
+    `).join('');
+}
+
+async function loadFunPage() {
+    const res = await fetch('fun.json');
+    const data = await res.json();
+    document.getElementById('fun-title').innerText = data.style.title || "Divertissement";
+    const grid = document.getElementById('radios-grid');
+    grid.innerHTML = data.radios.map(r => `
+        <div class="car-card" style="padding:20px; text-align:center;">
+            <img src="${r.logo}" style="width:60px; height:60px; object-fit:contain; margin-bottom:10px;">
+            <h4>${r.nom}</h4>
+            <audio controls src="${r.url}" style="width:100%; margin-top:15px;"></audio>
+        </div>
+    `).join('');
+}
+
+async function loadContactPage() {
+    const res = await fetch('contact.json');
+    const data = await res.json();
+    document.getElementById('contact-title').innerText = data.appearance.title || "Contact";
+    const form = document.getElementById('dynamic-form');
+    
+    form.innerHTML = data.formulaire.map(f => {
+        if(f.type === 'select') {
+            return `<label>${f.label}</label><select id="${f.id}">${f.options.map(o => `<option value="${o}">${o}</option>`).join('')}</select>`;
+        } else if(f.type === 'textarea') {
+            return `<label>${f.label}</label><textarea id="${f.id}" rows="4" placeholder="${f.placeholder}"></textarea>`;
+        }
+        return `<label>${f.label}</label><input type="${f.type}" id="${f.id}" placeholder="${f.placeholder}">`;
+    }).join('') + `<button type="submit" class="btn-submit">Envoyer sur WhatsApp</button>`;
 }
 
 function openTab(id) {
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
     document.getElementById(id).classList.add('active');
-    document.getElementById('nav-menu').classList.remove('active');
     window.scrollTo(0,0);
 }
 
-async function loadConfig() {
-    const res = await fetch('config.json');
-    siteConfig = await res.json();
-    
-    // Theme & Hero
-    document.documentElement.style.setProperty('--primary', siteConfig.theme.primary);
-    document.getElementById('hero-banner').style.backgroundImage = `url('${siteConfig.theme.hero_bg}')`;
-    
-    // Header & Footer
-    document.getElementById('brand-name').innerHTML = `${siteConfig.header.nom} <span>${siteConfig.header.suffixe}</span>`;
-    document.getElementById('main-footer').innerHTML = `
-        <div class="container">
-            <p><b>${siteConfig.header.nom} ${siteConfig.header.suffixe}</b></p>
-            <p>${siteConfig.footer.adresse}</p>
-            <p>NIF: ${siteConfig.footer.nif} | WhatsApp: ${siteConfig.footer.whatsapp}</p>
-        </div>`;
-
-    // Liens réseaux et appels
-    document.getElementById('hero-call').href = `tel:${siteConfig.header.telephone}`;
-    document.getElementById('fab-call').href = `tel:${siteConfig.header.telephone}`;
-    document.getElementById('hero-wa').href = `https://wa.me/${siteConfig.footer.whatsapp}`;
-    document.getElementById('link-fb').href = siteConfig.social.facebook;
-    document.getElementById('link-tk').href = siteConfig.social.tiktok;
-    document.getElementById('link-ig').href = siteConfig.social.instagram;
-    document.getElementById('link-map').href = siteConfig.social.maps;
-    
-    // Playlists
-    document.getElementById('play-yt').href = siteConfig.playlists.youtube;
-    document.getElementById('play-sp').href = siteConfig.playlists.spotify;
-    document.getElementById('play-dz').href = siteConfig.playlists.deezer;
-}
-
-async function loadData() {
-    const res = await fetch('data.json');
-    const data = await res.json();
-
-    // Pourquoi nous choisir
-    document.getElementById('features-grid').innerHTML = data.features.map(f => `
-        <div class="flip-card" onclick="this.classList.toggle('flipped')">
-            <div class="flip-front"><i class="fas ${f.icon}"></i><h4>${f.titre}</h4></div>
-            <div class="flip-back"><p>${f.description}</p></div>
-        </div>`).join('');
-
-    // Véhicules
-    document.getElementById('cars-grid').innerHTML = data.voitures.map(v => `
-        <div class="car-card">
-            <img src="${v.photos[0]}" style="width:100%; height:200px; object-fit:cover;">
-            <div class="car-info">
-                <span class="car-price-tag">${v.prix}</span>
-                <h3 style="margin-top:10px;">${v.nom}</h3>
-                <div class="car-specs">
-                    <span><i class="fas fa-gas-pump"></i> ${v.carburant}</span>
-                    <span><i class="fas fa-users"></i> ${v.places} places</span>
-                    <span><i class="fas fa-cog"></i> ${v.transmission}</span>
-                </div>
-                <p style="font-size:0.85rem; color:#666; margin-bottom:15px;">${v.description}</p>
-                <button class="nav-special" style="width:100%; border:none; padding:12px; cursor:pointer;" onclick="prefill('${v.nom}')">Réserver ce véhicule</button>
-            </div>
-        </div>`).join('');
-
-    // Radios
-    document.getElementById('radios-grid').innerHTML = data.radios.map(r => `
-        <div class="radio-card">
-            <img src="${r.logo}" style="width:45px; border-radius:8px; margin-bottom:5px;">
-            <p><b>${r.nom}</b></p>
-            <audio controls src="${r.url}" style="width:100%; height:30px; margin-top:10px;"></audio>
-        </div>`).join('');
-
-    // Conditions
-    document.getElementById('conditions-list').innerHTML = data.conditions.map(c => `
-        <div class="flip-card" onclick="this.classList.toggle('flipped')">
-            <div class="flip-front"><i class="fas ${c.icon}"></i><h4>${c.titre}</h4></div>
-            <div class="flip-back"><h4>${c.titre}</h4><p>${c.reponse}</p></div>
-        </div>`).join('');
-}
-
-function prefill(car) {
-    document.getElementById('subject').value = "Reservation";
-    document.getElementById('message').value = "Bonjour, je souhaite réserver le véhicule : " + car;
+function prefill(carName) {
     openTab('contact');
+    setTimeout(() => {
+        document.getElementById('message').value = `Bonjour, je souhaite réserver la ${carName}.`;
+    }, 100);
 }
 
-function sendWhatsApp() {
-    const nom = document.getElementById('lname').value;
+function sendWhatsApp(e) {
+    e.preventDefault();
     const msg = document.getElementById('message').value;
-    const finalMsg = `*Réservation Rija Niaina*%0A*Client:* ${nom}%0A*Message:* ${msg}`;
-    window.open(`https://wa.me/${siteConfig.footer.whatsapp}?text=${finalMsg}`, '_blank');
+    const url = `https://wa.me/${config.footer.whatsapp}?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank');
+}
+
+function toggleMenu() {
+    document.getElementById('nav-menu').classList.toggle('active');
 }

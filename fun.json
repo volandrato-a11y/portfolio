@@ -1,0 +1,18 @@
+{
+  "style": {
+    "title_color": "#0d47a1",
+    "card_bg": "#ffffff"
+  },
+  "radios": [
+    { 
+      "nom": "RDB Madagascar", 
+      "url": "https://stream.radio.mg/rdb", 
+      "logo": "images/rdb.png" 
+    },
+    { 
+      "nom": "RNA Radio", 
+      "url": "https://stream.radio.mg/rna", 
+      "logo": "images/rna.png" 
+    }
+  ]
+}
