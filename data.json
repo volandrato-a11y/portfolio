@@ -1,0 +1,29 @@
+{
+  "voitures": [
+    {
+      "nom": "Chevrolet Cruze",
+      "places": 5,
+      "transmission": "Automatique",
+      "carburant": "Essence",
+      "description": "Berline de luxe, idéale pour vos déplacements en ville et événements.",
+      "photos": ["images/cruze1.jpg", "images/cruze2.jpg"]
+    }
+  ],
+  "radios": [
+    {
+      "nom": "RDB 103.2",
+      "url": "https://stream.radio.co/s6f3c1b1f1/listen",
+      "logo": "images/logo_rdb.png"
+    }
+  ],
+  "conditions": [
+    {
+      "titre": "Documents requis",
+      "details": ["Permis de conduire valide (+2 ans)", "Copie CIN ou Passeport", "Justificatif de domicile récent"]
+    },
+    {
+      "titre": "Caution & Garantie",
+      "details": ["Dépôt de caution obligatoire au départ", "Restitution immédiate après état des lieux"]
+    }
+  ]
+}

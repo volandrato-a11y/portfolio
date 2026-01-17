@@ -1,112 +1,390 @@
+/* --- VARIABLES ET RÉINITIALISATION --- */
 :root {
-    --primary: #0d47a1;
-    --accent: #25d366;
-    --bg: #f4f7f9;
+    --primary: #0d47a1;     /* Bleu profond */
+    --accent: #25d366;      /* Vert WhatsApp */
+    --dark: #1a1a1a;        /* Noir texte/footer */
+    --light: #f0f2f5;       /* Gris très clair fond */
     --white: #ffffff;
-    --text: #333;
+    --glass: rgba(255, 255, 255, 0.9);
+    --shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    font-family: 'Open Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--light);
+    color: var(--dark);
+    line-height: 1.6;
 }
 
-/* HEADER */
+/* --- STRUCTURE GÉNÉRALE --- */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+h2 {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* --- HEADER & NAVIGATION --- */
 .header {
     position: fixed;
-    top: 0; width: 100%;
-    background: var(--primary);
-    color: white;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    top: 0;
+    width: 100%;
+    height: 70px;
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
 }
 
-.header-top {
-    padding: 10px;
+.nav-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.header h1 { font-family: 'Montserrat'; font-size: 16px; margin: 0; letter-spacing: 1px; }
-.header h1 span { color: #bbdefb; }
-
-.whatsapp-badge {
-    background: var(--accent);
-    color: white;
-    text-decoration: none;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: bold;
+#brand-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--dark);
 }
 
-nav {
+#brand-name span {
+    color: var(--primary);
+}
+
+#nav-menu {
+    display: flex;
+    gap: 10px;
+}
+
+#nav-menu button {
+    background: none;
+    border: none;
+    padding: 10px 15px;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--dark);
+    transition: 0.3s;
+    font-family: 'Poppins', sans-serif;
+}
+
+#nav-menu button:hover {
+    color: var(--primary);
+}
+
+.nav-special {
+    background: var(--primary) !important;
+    color: white !important;
+    border-radius: 25px;
+}
+
+.menu-burger {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--primary);
+}
+
+/* --- ONGLETS (TABS) --- */
+.tab {
+    display: none;
+    padding-top: 70px; /* Espace pour le header fixe */
+    animation: fadeIn 0.5s ease;
+}
+
+.tab.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- SECTION ACCUEIL (HERO) --- */
+.hero {
+    height: 80vh;
+    min-height: 500px;
+    background: url('images/chevrolet_cruze.jpg') center/cover no-repeat;
+    position: relative;
+    border-radius: 0 0 40px 40px;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    color: white;
+}
+
+.hero-overlay h2 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: white; /* Force le blanc pour le titre hero */
+}
+
+.hero-btns {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btn-call, .btn-wa {
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.btn-call { background: #d32f2f; color: white; }
+.btn-wa { background: var(--accent); color: white; }
+.btn-call:hover, .btn-wa:hover { transform: scale(1.05); }
+
+/* --- SECTION POURQUOI NOUS --- */
+.why-section {
+    padding: 60px 20px;
+    background: white;
+    text-align: center;
+}
+
+.feat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    max-width: 1100px;
+    margin: 40px auto 0;
+}
+
+.feat-card {
+    background: var(--light);
+    padding: 40px 20px;
+    border-radius: 20px;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.feat-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow);
+}
+
+.feat-card i {
+    font-size: 40px;
+    color: var(--primary);
+    margin-bottom: 20px;
+    display: block;
+}
+
+.feat-card h4 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* --- VOITURES & RADIOS (GRID) --- */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.car-card, .radio-card {
+    background: var(--white);
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: 0.3s;
+}
+
+.car-card:hover {
+    transform: translateY(-5px);
+}
+
+.slider {
     display: flex;
     overflow-x: auto;
-    background: rgba(0,0,0,0.1);
-    padding: 5px 0;
+    scroll-snap-type: x mandatory;
+    height: 220px;
+    scrollbar-width: none; /* Cache la scrollbar sur Firefox */
 }
 
-nav button {
-    background: none; border: none;
-    color: white; padding: 10px 15px;
-    font-size: 12px; font-weight: 600;
-    white-space: nowrap; cursor: pointer;
+.slider::-webkit-scrollbar { display: none; } /* Cache la scrollbar sur Chrome/Safari */
+
+.slider img {
+    min-width: 100%;
+    object-fit: cover;
+    scroll-snap-align: start;
 }
 
-.btn-nav-contact { background: rgba(255,255,255,0.2); border-radius: 4px; margin-left: 5px; }
+/* --- CONDITIONS --- */
+#conditions-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
 
-/* MAIN CONTENT */
-main { padding: 130px 15px 80px 15px; max-width: 600px; margin: auto; }
+.condition-item {
+    background: var(--white);
+    padding: 25px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+}
 
-.tab { display: none; animation: fadeIn 0.4s ease; }
-.tab.active { display: block; }
+.condition-item h3 {
+    color: var(--primary);
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
 
-@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.condition-item ul {
+    list-style: none;
+    padding-left: 0;
+}
 
-.section-title { font-family: 'Montserrat'; color: var(--primary); border-left: 4px solid var(--primary); padding-left: 10px; margin-bottom: 20px; font-size: 20px; }
+.condition-item li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 10px;
+}
 
-/* ACCUEIL CUSTOM */
-#home { text-align: center; padding-top: 20px; }
-.hero-content { background: white; padding: 30px 20px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-.tagline { color: var(--primary); font-weight: 800; font-size: 12px; display: block; margin-bottom: 10px; }
-.btn-main { background: var(--primary); color: white; border: none; padding: 15px 25px; border-radius: 30px; font-weight: bold; margin-top: 20px; width: 100%; }
+.condition-item li::before {
+    content: "•";
+    color: var(--primary);
+    font-weight: bold;
+    font-size: 1.5rem;
+    position: absolute;
+    left: 0;
+    top: -5px;
+}
 
-/* POURQUOI CHOISIR */
-.feature-item { display: flex; gap: 15px; background: white; padding: 15px; border-radius: 10px; margin-bottom: 10px; align-items: flex-start; }
-.feature-item i { font-size: 24px; color: var(--primary); margin-top: 5px; }
-.feature-item h3 { margin: 0 0 5px 0; font-size: 16px; }
-.feature-item p { margin: 0; font-size: 14px; color: #666; }
+/* --- FORMULAIRE CONTACT --- */
+.modern-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--white);
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: var(--shadow);
+}
 
-/* VOITURES & GALERIE */
-.car-card { background: white; border-radius: 15px; overflow: hidden; margin-bottom: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
-.car-gallery { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; background: #eee; }
-.car-gallery img { min-width: 100%; height: 200px; object-fit: cover; scroll-snap-align: start; }
-.car-details { padding: 20px; }
-.price { font-weight: 800; font-size: 18px; color: var(--primary); margin: 15px 0; padding: 10px; background: #e3f2fd; border-radius: 8px; text-align: center; }
-.btn-action { width: 100%; background: var(--primary); color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; }
+.modern-form input, .modern-form select, .modern-form textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    background: #fdfdfd;
+}
 
-/* ACCORDIONS */
-.accordion-item { background: white; margin-bottom: 8px; border-radius: 8px; border: 1px solid #ddd; }
-.accordion-header { width: 100%; padding: 15px; display: flex; justify-content: space-between; background: none; border: none; font-weight: bold; color: var(--primary); text-align: left; }
-.accordion-body { max-height: 0; overflow: hidden; transition: 0.3s ease-out; padding: 0 15px; font-size: 14px; line-height: 1.6; }
-.accordion-item.open .accordion-body { max-height: 200px; padding: 0 15px 15px 15px; }
+.btn-submit {
+    width: 100%;
+    padding: 15px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
 
-/* RADIOS */
-.radio-card { background: white; padding: 15px; border-radius: 12px; margin-bottom: 15px; text-align: center; border-bottom: 3px solid var(--primary); }
-audio { width: 100%; margin-top: 10px; }
+.btn-submit:hover { background: #0a3a85; }
 
-/* FORMULAIRE */
-.contact-form input, .contact-form select, .contact-form textarea { width: 100%; padding: 12px; margin-bottom: 12px; border: 1px solid #ccc; border-radius: 8px; font-family: inherit; box-sizing: border-box; }
-.contact-form textarea { height: 100px; }
-.btn-submit { width: 100%; background: var(--accent); color: white; border: none; padding: 15px; border-radius: 8px; font-weight: bold; font-size: 16px; }
+/* --- FOOTER --- */
+footer {
+    background: var(--dark);
+    color: #cbd5e0;
+    padding: 60px 20px;
+    text-align: center;
+    margin-top: 60px;
+}
 
-/* FOOTER */
-footer { text-align: center; padding: 20px; font-size: 11px; color: #777; background: #eee; }
-.legal { margin-top: 10px; font-weight: bold; }
+.social-links {
+    margin-bottom: 25px;
+}
 
-/* BOUTON FLOTTANT */
-.floating-call { position: fixed; bottom: 20px; right: 20px; background: #d32f2f; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 22px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 999; }
+.social-links a {
+    color: var(--white);
+    font-size: 24px;
+    margin: 0 15px;
+    transition: 0.3s;
+}
+
+.social-links a:hover { color: var(--primary); }
+
+footer p { margin-bottom: 10px; font-size: 0.95rem; }
+
+.legal {
+    margin-top: 25px;
+    font-size: 0.8rem;
+    opacity: 0.6;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 768px) {
+    .menu-burger {
+        display: block;
+    }
+
+    #nav-menu {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: white;
+        display: none;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    }
+
+    #nav-menu.open {
+        display: flex;
+    }
+
+    .hero-overlay h2 {
+        font-size: 2rem;
+    }
+
+    .hero-btns {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 40px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
