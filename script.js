@@ -9,30 +9,34 @@ async function initSite() {
         const resConfig = await fetch('config.json');
         siteConfig = await resConfig.json();
 
-        // Thème
+        // 1. Thème et Fond Global
         document.documentElement.style.setProperty('--primary', siteConfig.theme.primary);
         document.documentElement.style.setProperty('--accent', siteConfig.theme.accent);
         
-        // Header
-        // Dans la fonction async function initSite()
+        if (siteConfig.theme.site_bg) {
+            document.body.style.backgroundImage = `url('${siteConfig.theme.site_bg}')`;
+            document.body.style.backgroundAttachment = "fixed";
+            document.body.style.backgroundSize = "cover";
+        }
 
-document.getElementById('brand-name').innerHTML = `
-    <img src="${siteConfig.header.logo_url}" alt="Logo" style="height: 40px; vertical-align: middle; margin-right: 10px;">
-    ${siteConfig.header.nom} <span>${siteConfig.header.suffixe}</span>
-`;
-// Dans la fonction async function initSite() ...
-document.getElementById('footer-info').innerHTML = `
-    <p><b>${siteConfig.header.nom}</b><br>${siteConfig.footer.adresse}</p>
-    <p style="margin-top:5px;">
-        <i class="fas fa-phone"></i> ${siteConfig.footer.telephone}
-    </p>
-    <p style="font-size:0.8rem; margin-top:5px; color:#777;">
-        NIF: ${siteConfig.footer.nif} | STAT: ${siteConfig.footer.stat}
-    </p>
-`;
+        // 2. Header (Logo + Nom)
+        document.getElementById('brand-name').innerHTML = `
+            <img src="${siteConfig.header.logo_url}" alt="Logo" style="height: 40px; vertical-align: middle; margin-right: 10px;">
+            ${siteConfig.header.nom} <span>${siteConfig.header.suffixe}</span>
+        `;
 
-// Cherchez ce bloc dans la fonction initSite et remplacez-le :
+        // 3. Footer (Infos, Téléphone, NIF/STAT)
+        document.getElementById('footer-info').innerHTML = `
+            <p><b>${siteConfig.header.nom}</b><br>${siteConfig.footer.adresse}</p>
+            <p style="margin-top:5px;">
+                <i class="fas fa-phone"></i> ${siteConfig.footer.telephone}
+            </p>
+            <p style="font-size:0.8rem; margin-top:5px; color:#777;">
+                NIF: ${siteConfig.footer.nif} | STAT: ${siteConfig.footer.stat}
+            </p>
+        `;
 
+        // 4. Réseaux Sociaux (incluant Google Maps)
         document.getElementById('social-links').innerHTML = `
             <a href="${siteConfig.social_links.facebook}" target="_blank"><i class="fab fa-facebook"></i></a>
             <a href="${siteConfig.social_links.tiktok}" target="_blank"><i class="fab fa-tiktok"></i></a>
@@ -40,36 +44,42 @@ document.getElementById('footer-info').innerHTML = `
             <a href="${siteConfig.social_links.maps}" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
         `;
 
-        // Liens
-        document.getElementById('fab-call').href = `tel:${siteConfig.footer.telephone.replace(/\s/g, '')}`;
-        document.getElementById('hero-whatsapp').href = `https://wa.me/${siteConfig.footer.whatsapp}`;
+        // 5. Liens d'action directs
+        const fabCall = document.getElementById('fab-call');
+        if(fabCall) fabCall.href = `tel:${siteConfig.footer.telephone.replace(/\s/g, '')}`;
+        
+        const heroWhatsapp = document.getElementById('hero-whatsapp');
+        if(heroWhatsapp) heroWhatsapp.href = `https://wa.me/${siteConfig.footer.whatsapp}`;
 
-        // Chargement des modules
+        // 6. Chargement des modules de données
         await loadHome();
         await loadCards();
         await loadCars();
         await loadFun();
         await loadContact();
 
-    } catch (e) { console.error("Erreur init:", e); }
+    } catch (e) { 
+        console.error("Erreur lors de l'initialisation du site:", e); 
+    }
 }
 
 async function loadHome() {
     const res = await fetch('home.json');
     const data = await res.json();
-    document.getElementById('hero-banner').style.backgroundImage = `url('${data.hero.image}')`;
+    const banner = document.getElementById('hero-banner');
+    if(banner) banner.style.backgroundImage = `url('${data.hero.image}')`;
+    
     document.getElementById('hero-title').innerText = data.hero.titre;
     document.getElementById('hero-slogan').innerText = data.hero.slogan;
     document.getElementById('hero-desc').innerText = data.hero.description;
 }
 
-// Correction des Cartes Tournantes
-// Remplacez toute la fonction loadCards par ceci :
+// Gestion des Cartes Tournantes (Flip Cards)
 async function loadCards() {
     const res = await fetch('data_cards.json');
     const data = await res.json();
     
-    // MODIFICATION ICI : On utilise la structure flip-card pour "Pourquoi nous choisir"
+    // Pourquoi nous choisir
     document.getElementById('features-grid').innerHTML = data.features.map(f => `
         <div class="flip-card" onclick="this.classList.toggle('flipped')">
             <div class="flip-card-inner">
@@ -84,7 +94,7 @@ async function loadCards() {
         </div>
     `).join('');
 
-    // Les conditions restent aussi en mode "flip"
+    // Conditions de location
     document.getElementById('conditions-grid').innerHTML = data.conditions.map(c => `
         <div class="flip-card" onclick="this.classList.toggle('flipped')">
             <div class="flip-card-inner">
@@ -100,7 +110,7 @@ async function loadCards() {
     `).join('');
 }
 
-// Mise à jour Véhicules (Galerie défilante)
+// Galerie défilante des véhicules
 async function loadCars() {
     const res = await fetch('cars.json');
     const data = await res.json();
@@ -128,7 +138,7 @@ async function loadCars() {
     `).join('');
 }
 
-// Mise à jour Divertissement (Radios + Playlists)
+// Radios et Playlists
 async function loadFun() {
     const res = await fetch('fun.json');
     const data = await res.json();
@@ -146,7 +156,7 @@ async function loadFun() {
         </div>
     `).join('');
 
-    // 2. Les Playlists (si elles existent dans le JSON)
+    // 2. Les Playlists
     if(data.playlists) {
         contentHtml += data.playlists.map(p => `
              <div class="radio-card">
@@ -154,7 +164,7 @@ async function loadFun() {
                 <div class="radio-logo-container">
                     <img src="${p.logo}" alt="${p.nom}">
                 </div>
-                <a href="${p.link}" target="_blank" class="btn-primary" style="width:100%; justify-content:center;">
+                <a href="${p.link}" target="_blank" class="btn-primary" style="width:100%; justify-content:center; text-decoration:none;">
                     <i class="fas fa-play"></i> Écouter
                 </a>
             </div>
@@ -164,6 +174,7 @@ async function loadFun() {
     document.getElementById('radios-grid').innerHTML = contentHtml;
 }
 
+// Génération dynamique du formulaire de contact
 async function loadContact() {
     const res = await fetch('contact.json');
     const data = await res.json();
@@ -182,6 +193,7 @@ async function loadContact() {
     }).join('') + `<button type="submit" class="btn-submit">Envoyer sur WhatsApp <i class="fab fa-whatsapp"></i></button>`;
 }
 
+// Navigation entre les onglets
 function openTab(id) {
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
     document.getElementById(id).classList.add('active');
@@ -193,6 +205,7 @@ function toggleMenu() {
     document.getElementById('nav-menu').classList.toggle('active');
 }
 
+// Pré-remplissage du message WhatsApp
 function prefill(car) {
     openTab('contact');
     setTimeout(() => {
@@ -204,15 +217,16 @@ function prefill(car) {
     }, 300);
 }
 
+// Envoi vers WhatsApp
 function sendWhatsApp(e) {
     e.preventDefault();
     const inputs = document.querySelectorAll('#dynamic-form input, #dynamic-form select, #dynamic-form textarea');
-    let msg = "";
+    let msg = "Bonjour, voici ma demande :%0A%0A";
+    
     inputs.forEach(input => {
-        if(input.value) msg += `*${input.previousElementSibling.innerText}*: ${input.value}%0A`;
+        const label = input.previousElementSibling ? input.previousElementSibling.innerText : "Champ";
+        if(input.value) msg += `*${label}*: ${input.value}%0A`;
     });
     
     window.open(`https://wa.me/${siteConfig.footer.whatsapp}?text=${msg}`, '_blank');
-
 }
-
