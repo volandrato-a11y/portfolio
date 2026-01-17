@@ -43,13 +43,23 @@
     <section id="contact" class="tab">
         <div class="container">
             <div class="contact-wrapper">
-                <h2>Réservation</h2>
+                <h2>Contactez-nous</h2>
                 <form onsubmit="sendWhatsApp(); return false;">
                     <div class="form-row">
                         <div class="form-group"><label>Nom</label><input type="text" id="lname" required></div>
                         <div class="form-group"><label>Prénom</label><input type="text" id="fname" required></div>
                     </div>
-                    <button type="submit" class="btn-submit">WhatsApp</button>
+                    <div class="form-group"><label>Adresse Mail</label><input type="email" id="email" required></div>
+                    <div class="form-group">
+                        <label>Motif</label>
+                        <select id="subject">
+                            <option value="Reservation">Réservation</option>
+                            <option value="Demande de devis">Demande de devis</option>
+                            <option value="Suggestion">Suggestion</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><label>Message</label><textarea id="message" rows="4" required></textarea></div>
+                    <button type="submit" class="btn-submit">Envoyer sur WhatsApp <i class="fab fa-whatsapp"></i></button>
                 </form>
             </div>
         </div>
