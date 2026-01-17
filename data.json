@@ -3,12 +3,12 @@
     {
       "titre": "Autonomie",
       "icon": "fa-key",
-      "description": "Prenez le contrôle total de vos déplacements. Pas de chauffeur, vous êtes libre d'aller où vous voulez."
+      "description": "Prenez le contrôle total de vos déplacements. Pas de chauffeur, vous êtes libre."
     },
     {
       "titre": "Sécurité",
       "icon": "fa-shield-alt",
-      "description": "Véhicules révisés rigoureusement. Nous garantissons une mécanique fiable pour votre tranquillité."
+      "description": "Véhicules révisés rigoureusement pour votre tranquillité."
     },
     {
       "titre": "Rapidité",
@@ -25,15 +25,6 @@
       "carburant": "Essence",
       "description": "Berline de luxe, idéale pour vos déplacements en ville et événements.",
       "photos": ["images/cruze1.jpg", "images/cruze2.jpg"]
-    },
-        {
-      "nom": "Chevrolet CAPTIVA",
-      "prix": "180 000 Ar/jour",
-      "places": 7,
-      "transmission": "Automatique",
-      "carburant": "Diesel",
-      "description": "SUV de luxe, idéale pour vos déplacements en ville et événements.",
-      "photos": ["images/cruze1.jpg", "images/cruze2.jpg"]
     }
   ],
   "radios": [
@@ -45,13 +36,19 @@
   ],
   "conditions": [
     {
-      "titre": "Documents requis",
-      "details": ["Permis de conduire valide", "Copie CIN ou Passeport", "Justificatif de domicile"]
+      "titre": "Caution",
+      "reponse": "0 Caution (selon conditions)",
+      "icon": "fa-hand-holding-usd"
     },
     {
-      "titre": "Paiement & Caution",
-      "details": ["Caution obligatoire au départ", "Paiement total à la remise des clés"]
+      "titre": "Documents",
+      "reponse": "Permis B & CIN requis",
+      "icon": "fa-file-signature"
+    },
+    {
+      "titre": "Carburant",
+      "reponse": "À rendre au même niveau",
+      "icon": "fa-gas-pump"
     }
   ]
-
 }
