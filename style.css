@@ -16,6 +16,34 @@ body {
     background-color: transparent; /* Pour laisser voir le fond du html */
 }
 
+/* Boutons réutilisables */
+.btn {
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-weight: 700;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.25s;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+.btn-icon {
+  padding: 8px 10px;
+  border-radius: 50px;
+  justify-content: center;
+  font-size: 0.95rem;
+  width: auto;
+  height: auto;
+}
+
+/* Couleurs */
+.btn-primary { background: var(--primary); color: #fff; }
+.btn-whatsapp { background: var(--accent); color: #fff; }
+
 /* --- HEADER --- */
 .header { position: fixed; top: 0; width: 100%; height: 70px; background: rgba(255,255,255,0.98); z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); display: flex; align-items: center; }
 .nav-container { width: 90%; max-width: 1200px; margin: auto; display: flex; justify-content: space-between; align-items: center; }
@@ -39,12 +67,14 @@ body {
 .section-title::after { content: ''; display: block; width: 60px; height: 3px; background: var(--accent); margin: 10px auto; }
 
 /* --- HERO --- */
-.hero { height: 85vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white; background-size: cover; background-position: center; position: relative; margin-bottom: 50px; background-color: transparent !important; }
+.hero { height: 85vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white; background-size: cover; background-position: center; position: relative; margin: 0; }
 .hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)); }
 .hero-content { position: relative; z-index: 1; max-width: 800px; padding: 20px; }
 #hero-title { font-size: 3rem; margin-bottom: 15px; }
 .hero-btns { display: flex; gap: 15px; justify-content: center; margin-top: 20px; }
-.btn-primary, .btn-whatsapp { padding: 12px 30px; border-radius: 50px; font-weight: bold; text-decoration: none; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; transition: 0.3s; }
+
+/* Compatibilité avec anciens sélecteurs existants */
+.btn-primary, .btn-whatsapp { /* garde l'ancienne compatibilité si référencés ailleurs */ }
 .btn-primary { background: var(--primary); color: white; }
 .btn-whatsapp { background: var(--accent); color: white; }
 
@@ -68,6 +98,9 @@ body {
 .car-tags { display: flex; gap: 10px; margin-bottom: 15px; font-size: 0.85rem; color: #666; flex-wrap: wrap; }
 .car-tags span { background: #f0f2f5; padding: 5px 10px; border-radius: 5px; }
 
+/* Actions dans les cartes (espace & alignement) */
+.car-actions { display: flex; gap: 10px; align-items: center; margin-top: 12px; }
+
 /* --- DIVERTISSEMENT --- */
 .radios-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
 .radio-card { background: white; border-radius: 15px; padding: 20px; text-align: center; box-shadow: var(--card-shadow); height: 280px; display: flex; flex-direction: column; justify-content: space-between; }
@@ -77,18 +110,25 @@ body {
 .contact-wrapper { background: white; padding: 40px; border-radius: 20px; box-shadow: var(--card-shadow); max-width: 700px; margin: 0 auto; }
 .form-group { margin-bottom: 20px; }
 .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 10px; background: #f9f9f9; }
+
+/* Utiliser btn-submit tout en restant compatible */
 .btn-submit { width: 100%; background: var(--accent); color: white; padding: 16px; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px; }
 
 /* --- FOOTER & FAB --- */
 footer { background: rgba(255, 255, 255, 0.95) !important; padding: 40px 0; text-align: center; border-top: 1px solid #eee; margin-top: 60px; }
 .social-footer a { margin: 0 10px; font-size: 1.5rem; color: var(--primary); }
-.fab-call { position: fixed; bottom: 20px; right: 20px; background: var(--primary); color: white; padding: 12px 20px; border-radius: 50px; text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 8px; z-index: 2000; }
+.fab-call { position: fixed; bottom: 20px; right: 20px; background: var(--primary); color: white; padding: 12px 20px; border-radius: 50px; text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.15); display: flex; align-items: center; gap: 8px; z-index: 2000; }
 
+/* Make fab visually consistent with btn classes when applied */
+.fab-call.btn { padding: 12px 18px; border-radius: 40px; }
+
+/* Responsive */
 @media (max-width: 768px) {
     .menu-burger { display: block; }
     #nav-menu { display: none; position: absolute; top: 70px; left: 0; width: 100%; background: white; flex-direction: column; padding: 20px; }
     #nav-menu.active { display: flex; }
     .features-grid, .conditions-grid, .cars-grid, .radios-grid { grid-template-columns: 1fr; }
+    .hero-btns { flex-direction: column; }
 }
 
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }

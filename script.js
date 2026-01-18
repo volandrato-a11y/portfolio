@@ -134,8 +134,13 @@ async function loadCars() {
                 </div>
                 <p class="car-desc">${car.description}</p>
                 <div class="car-actions">
-                    <button class="btn-reserve" onclick="prefill('${car.nom}')">Réserver</button>
-                    <a href="tel:${siteConfig.footer.telephone}" class="btn-call-small"><i class="fas fa-phone"></i></a>
+                    <button class="btn btn-primary btn-reserve" onclick="prefill('${car.nom}')">Réserver</button>
+                    <a href="https://wa.me/${siteConfig.footer.whatsapp}" target="_blank" class="btn btn-whatsapp btn-icon" aria-label="WhatsApp ${car.nom}">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="tel:${siteConfig.footer.telephone.replace(/\s/g,'')}" class="btn btn-primary btn-icon" aria-label="Appeler ${car.nom}">
+                        <i class="fas fa-phone"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -165,7 +170,7 @@ async function loadFun() {
                 <div class="radio-logo-container">
                     <img src="${p.logo}" alt="${p.nom}">
                 </div>
-                <a href="${p.link}" target="_blank" class="btn-primary" style="width:100%; justify-content:center; text-decoration:none;">
+                <a href="${p.link}" target="_blank" class="btn btn-primary" style="width:100%; justify-content:center; text-decoration:none;">
                     <i class="fas fa-play"></i> Écouter
                 </a>
             </div>
@@ -190,7 +195,7 @@ async function loadContact() {
             inputHtml = `<input type="${f.type}" id="${f.id}" placeholder="${f.placeholder}">`;
         }
         return `<div class="form-group"><label>${f.label}</label>${inputHtml}</div>`;
-    }).join('') + `<button type="submit" class="btn-submit">Envoyer sur WhatsApp <i class="fab fa-whatsapp"></i></button>`;
+    }).join('') + `<button type="submit" class="btn btn-whatsapp btn-submit">Envoyer sur WhatsApp <i class="fab fa-whatsapp"></i></button>`;
 }
 
 // Fonctions utilitaires (Onglets, Menu, Prefill)
