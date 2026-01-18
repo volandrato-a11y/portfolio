@@ -7,7 +7,7 @@
       "transmission": "Automatique",
       "carburant": "Essence",
       "description": "Berline de luxe, élégante et puissante pour vos trajets urbains.",
-      "photos": ["images/cruze1.jpg"]
+      "photos": ["images/cruzen1.jpeg", "images/cruzen2.jpeg","images/cruzem1.jpeg","images/cruzem2.jpeg"]
     },
     {
       "nom": "Chevrolet Captiva",
@@ -17,6 +17,15 @@
       "carburant": "Diesel",
       "description": "SUV spacieux et robuste, idéal pour les familles et longs trajets.",
       "photos": ["images/captiva.jpg"]
+    },
+        {
+      "nom": "Hyundai iX35",
+      "prix": "180 000 Ar / jour",
+      "places": 5,
+      "transmission": "Automatique",
+      "carburant": "Essence",
+      "description": "SUV spacieux et robuste, idéal pour les familles et longs trajets.",
+      "photos": ["images/ix1.jpeg", "images/ix2.jpeg", "images/ix3.jpeg"]
     },
     {
       "nom": "Kia Pride Rio",
@@ -39,3 +48,4 @@
   ]
 
 }
+
