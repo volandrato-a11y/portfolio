@@ -4,20 +4,20 @@
     "card_bg": "#ffffff"
   },
   "radios": [
-    { 
-      "nom": "RDB Madagascar", 
-      "url": "https://stream.radio.mg/rdb", 
-      "logo": "images/rdb.png" 
+    {
+      "nom": "Rire & Chansons",
+      "url": "https://streaming.nrjaudio.fm/ou8o8xgk7oiu?origine=ubuntu-fr.org",
+      "logo": "https://static.rireetchansons.fr/var/oeillet_site/storage/images/rireetchansons/logo-rire-chansons/25108-1-fre-FR/Logo-Rire-Chansons_reference.png"
     },
-    { 
-      "nom": "RNA Radio", 
-      "url": "https://stream.radio.mg/rna", 
-      "logo": "images/rna.png" 
+    {
+      "nom": "Skyrock",
+      "url": "http://icecast.skyrock.net/s/natio_mp3_128k",
+      "logo": "https://www.skyrock.fm/static/images/global/skyrock-fb.png"
     },
-    { 
-      "nom": "Radio Fahazavana", 
-      "url": "http://stream.zeno.fm/t32b2v9p5k8uv", 
-      "logo": "images/logo.png" 
+    {
+      "nom": "NRJ",
+      "url": "https://streaming.nrjaudio.fm/oumvmk8fnozc?origine=ubuntu-fr.org",
+      "logo": "https://www.nrj.fr/assets/NRJ_logos_PNG/logo-nrj-carre.png"
     }
   ],
   "playlists": [
