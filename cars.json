@@ -16,7 +16,7 @@
       "transmission": "Automatique",
       "carburant": "Diesel",
       "description": "SUV spacieux et robuste, idéal pour les familles et longs trajets.",
-      "photos": ["images/captiva.jpg"]
+      "photos": ["images/captiva1.jpeg","images/captiva2.jpeg"]
     },
         {
       "nom": "Hyundai iX35",
@@ -34,7 +34,7 @@
       "transmission": "Automatique",
       "carburant": "Essence",
       "description": "Citadine moderne, confortable et très facile à conduire.",
-      "photos": ["images/rio.jpg"]
+      "photos": ["images/pride1.jpg","images/pride2.jpg"]
     },
     {
       "nom": "Hyundai Getz",
@@ -43,9 +43,10 @@
       "transmission": "Manuel",
       "carburant": "Essence",
       "description": "Économique et compacte, parfaite pour circuler partout en ville.",
-      "photos": ["images/getz.jpg"]
+      "photos": ["images/getz1.jpeg","images/getz2.jpeg","images/getz3.jpeg"]
     }
   ]
 
 }
+
 
